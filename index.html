@@ -4,173 +4,228 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Emmanuel Junior Centre School | CBC School Kayole Junction, Nairobi | Grade 1–9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #0f2438;
-    --navy-2: #16324d;
-    --gold: #d4a017;
-    --gold-light: #f0c75e;
-    --green: #123524;
-    --cream: #faf7ef;
-    --text: #232323;
-    --muted: #667085;
+    --primary: #14532d;
+    --primary-2: #1e6b3a;
+    --primary-dark: #0a2e1a;
+    --gold: #d1a13c;
+    --gold-light: #f2ca70;
+    --cream: #faf8f1;
+    --text: #1b231d;
+    --muted: #5f6f66;
     --white: #ffffff;
-    --border: #e6e2d8;
+    --border: #e2e7df;
+    --shadow-sm: 0 2px 10px rgba(10,46,26,0.08);
+    --shadow-md: 0 10px 28px rgba(10,46,26,0.14);
+    --shadow-lg: 0 24px 48px rgba(10,46,26,0.20);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--text); background: var(--cream); line-height: 1.6; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--text); background: var(--cream); line-height: 1.65; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
   a { text-decoration: none; color: inherit; }
   img, svg { max-width: 100%; display: block; }
   ul { list-style: none; }
   button { font-family: inherit; cursor: pointer; }
   .container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
-  header { background: var(--navy); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 12px rgba(0,0,0,0.18); }
+
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.16,.8,.24,1), transform .7s cubic-bezier(.16,.8,.24,1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .hero-anim-1, .hero-anim-2, .hero-anim-3, .hero-anim-4, .hero-anim-5, .hero-anim-6, .hero-anim-7 { animation: none !important; opacity: 1 !important; transform: none !important; }
+    .pillar, .program-card, .activity-card, .value-card, .mvv-card, .testimonial-card, .uniform-card, .transport-card, .gallery-item, .btn, .fee-table-wrap, .fee-note-box, nav a::after, .brand-badge { transition: none !important; }
+  }
+
+  header { background: rgba(10,46,26,0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 16px rgba(10,46,26,0.22); }
   .navbar { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; max-width: 1180px; margin: 0 auto; gap: 16px; }
   .brand { display: flex; align-items: center; gap: 10px; color: var(--white); }
-  .brand-badge { width: 42px; height: 42px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; color: var(--navy); font-weight: 800; font-size: 1rem; flex-shrink: 0; }
+  .brand-badge { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-light), var(--gold)); display: flex; align-items: center; justify-content: center; color: var(--primary-dark); font-weight: 800; font-size: 1rem; flex-shrink: 0; transition: transform .3s ease; }
+  .brand:hover .brand-badge { transform: rotate(-8deg) scale(1.05); }
   .brand-text strong { display: block; font-size: 1.02rem; font-weight: 700; }
   .brand-text span { display: block; font-size: 0.72rem; color: var(--gold-light); font-style: italic; }
   nav ul { display: flex; gap: 22px; align-items: center; }
-  nav a { color: var(--white); font-weight: 500; font-size: 0.88rem; }
+  nav a { color: var(--white); font-weight: 500; font-size: 0.88rem; position: relative; padding-bottom: 2px; }
+  nav a::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: var(--gold-light); transition: width .25s ease; }
   nav a:hover { color: var(--gold-light); }
-  .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 9px 16px; border-radius: 6px; font-weight: 700 !important; }
+  nav a:not(.nav-cta):hover::after { width: 100%; }
+  .nav-cta { background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: var(--primary-dark) !important; padding: 9px 18px; border-radius: 6px; font-weight: 700 !important; transition: transform .25s ease, box-shadow .25s ease; }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(209,161,60,0.35); }
   .nav-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.6rem; }
   @media (max-width: 900px) {
-    nav ul { display: none; flex-direction: column; align-items: flex-start; position: absolute; top: 66px; left: 0; right: 0; background: var(--navy-2); padding: 18px 20px; gap: 14px; }
+    nav ul { display: none; flex-direction: column; align-items: flex-start; position: absolute; top: 66px; left: 0; right: 0; background: rgba(10,46,26,0.98); backdrop-filter: blur(10px); padding: 18px 20px; gap: 14px; }
     nav ul.open { display: flex; }
     .nav-toggle { display: block; }
   }
-  .hero { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%); color: var(--white); padding: 70px 20px 80px; }
-  .hero-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; }
+
+  .hero { position: relative; overflow: hidden; background: radial-gradient(circle at 14% 18%, rgba(255,255,255,0.06) 0%, transparent 42%), radial-gradient(circle at 86% 82%, rgba(209,161,60,0.16) 0%, transparent 48%), linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: var(--white); padding: 76px 20px 88px; }
+  .hero-grid { position: relative; max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; }
   @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
-  .eyebrow { display: inline-block; background: rgba(212,160,23,0.18); border: 1px solid rgba(212,160,23,0.35); color: var(--gold-light); padding: 6px 16px; border-radius: 20px; font-size: 0.78rem; letter-spacing: 0.04em; margin-bottom: 20px; }
-  .hero h1 { font-size: clamp(2rem, 4.5vw, 2.9rem); margin-bottom: 14px; font-weight: 800; line-height: 1.15; }
+  .eyebrow { display: inline-block; background: rgba(209,161,60,0.18); border: 1px solid rgba(209,161,60,0.38); color: var(--gold-light); padding: 6px 16px; border-radius: 20px; font-size: 0.78rem; letter-spacing: 0.04em; margin-bottom: 20px; }
+  .hero h1 { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; font-size: clamp(2.1rem, 4.6vw, 3.1rem); margin-bottom: 16px; font-weight: 700; line-height: 1.14; letter-spacing: -0.01em; }
   .hero h1 em { color: var(--gold-light); font-style: normal; }
-  .hero .motto { color: var(--gold-light); font-style: italic; margin-bottom: 16px; font-size: 1.02rem; }
-  .hero p.desc { color: #cfd8e3; margin-bottom: 26px; font-size: 1rem; max-width: 540px; }
-  .cta-group { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 34px; }
-  .btn { display: inline-block; padding: 12px 24px; border-radius: 8px; font-weight: 600; font-size: 0.92rem; border: 2px solid transparent; transition: transform .15s, box-shadow .15s; }
-  .btn:hover { transform: translateY(-2px); }
-  .btn-primary { background: var(--gold); color: var(--navy); }
-  .btn-primary:hover { box-shadow: 0 6px 18px rgba(212,160,23,0.4); }
+  .hero .motto { color: var(--gold-light); font-style: italic; margin-bottom: 16px; font-size: 1.04rem; }
+  .hero p.desc { color: #d7e2da; margin-bottom: 28px; font-size: 1rem; max-width: 540px; }
+  .cta-group { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 36px; }
+  .btn { display: inline-block; padding: 12px 26px; border-radius: 8px; font-weight: 600; font-size: 0.92rem; border: 2px solid transparent; transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease, border-color .25s ease; }
+  .btn:hover { transform: translateY(-3px); }
+  .btn:active { transform: translateY(-1px); }
+  .btn-primary { background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: var(--primary-dark); }
+  .btn-primary:hover { box-shadow: 0 10px 24px rgba(209,161,60,0.4); }
   .btn-outline { border-color: rgba(255,255,255,0.45); color: var(--white); }
-  .btn-outline:hover { background: rgba(255,255,255,0.08); }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
   .stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
-  .stat-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 14px 10px; text-align: center; }
-  .stat-card .num { color: var(--gold-light); font-weight: 800; font-size: 1.4rem; }
-  .stat-card .label { font-size: 0.72rem; color: #cfd8e3; margin-top: 2px; }
+  .stat-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; padding: 16px 10px; text-align: center; transition: transform .3s ease, background-color .3s ease; }
+  .stat-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.1); }
+  .stat-card .num { color: var(--gold-light); font-weight: 800; font-size: 1.5rem; font-variant-numeric: tabular-nums; }
+  .stat-card .label { font-size: 0.72rem; color: #d7e2da; margin-top: 2px; }
   @media (max-width: 560px) { .stats-row { grid-template-columns: repeat(2,1fr); } }
-  .hero-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 26px; }
-  .hero-card .campus-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .hero-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); border-radius: 16px; padding: 28px; box-shadow: var(--shadow-lg); }
+  .hero-card .campus-row { display: flex; justify-content: space-between; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
   .hero-card .campus-row:last-child { border-bottom: none; }
   .hero-card .campus-row strong { display: block; color: var(--white); font-size: 0.95rem; }
-  .hero-card .campus-row span { color: #b9c4d3; font-size: 0.82rem; }
-  section { padding: 64px 20px; }
-  .section-head { text-align: center; max-width: 640px; margin: 0 auto 44px; }
-  .section-head .tag { color: var(--gold); font-weight: 700; text-transform: uppercase; font-size: 0.76rem; letter-spacing: 0.08em; }
-  .section-head h2 { font-size: clamp(1.55rem, 3vw, 2.1rem); margin: 8px 0 10px; color: var(--navy); }
+  .hero-card .campus-row span { color: #c3d2c8; font-size: 0.82rem; }
+
+  @keyframes heroFadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-anim-1 { animation: heroFadeUp .7s ease both; }
+  .hero-anim-2 { animation: heroFadeUp .7s ease .08s both; }
+  .hero-anim-3 { animation: heroFadeUp .7s ease .16s both; }
+  .hero-anim-4 { animation: heroFadeUp .7s ease .24s both; }
+  .hero-anim-5 { animation: heroFadeUp .7s ease .32s both; }
+  .hero-anim-6 { animation: heroFadeUp .7s ease .4s both; }
+  .hero-anim-7 { animation: heroFadeUp .8s ease .3s both; }
+
+  section { padding: 72px 20px; }
+  @media (min-width: 768px) { section { padding: 96px 24px; } }
+  .section-head { text-align: center; max-width: 640px; margin: 0 auto 48px; }
+  .section-head .tag { color: var(--gold); font-weight: 700; text-transform: uppercase; font-size: 0.76rem; letter-spacing: 0.1em; }
+  .section-head h2 { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; font-size: clamp(1.65rem, 3.1vw, 2.3rem); margin: 10px 0 12px; color: var(--primary); font-weight: 700; }
   .section-head h2 em { color: var(--gold); font-style: normal; }
-  .section-head p { color: var(--muted); font-size: 0.96rem; }
+  .section-head p { color: var(--muted); font-size: 0.98rem; }
   .alt-bg { background: var(--white); }
-  .campus-tags { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
-  .campus-tag { background: var(--cream); border: 1px solid var(--border); border-radius: 10px; padding: 12px 20px; font-size: 0.85rem; color: var(--navy); font-weight: 600; }
-  .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 20px; max-width: 1000px; margin: 0 auto 44px; }
-  .pillar { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 26px; text-align: center; }
-  .pillar .ico { width: 50px; height: 50px; border-radius: 50%; background: var(--navy); color: var(--gold-light); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; font-size: 1.3rem; }
-  .pillar h3 { color: var(--navy); margin-bottom: 8px; font-size: 1.02rem; }
+  .campus-tags { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 44px; }
+  .campus-tag { background: var(--cream); border: 1px solid var(--border); border-radius: 10px; padding: 12px 20px; font-size: 0.85rem; color: var(--primary); font-weight: 600; transition: transform .25s ease, box-shadow .25s ease; }
+  .campus-tag:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+  .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 22px; max-width: 1000px; margin: 0 auto 48px; }
+  .pillar { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 28px; text-align: center; transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+  .pillar:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(20,83,45,0.18); }
+  .pillar .ico { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-2), var(--primary)); color: var(--gold-light); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.3rem; }
+  .pillar h3 { color: var(--primary); margin-bottom: 8px; font-size: 1.02rem; }
   .pillar p { color: var(--muted); font-size: 0.88rem; }
-  .mvv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto 44px; }
+  .mvv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto 48px; }
   @media (max-width: 800px) { .mvv-grid { grid-template-columns: 1fr; } }
-  .mvv-card { background: var(--navy); color: var(--white); border-radius: 12px; padding: 24px; text-align: center; }
-  .mvv-card h3 { color: var(--gold-light); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
-  .mvv-card p { font-size: 0.92rem; color: #dbe2ea; }
+  .mvv-card { background: linear-gradient(160deg, var(--primary), var(--primary-dark)); color: var(--white); border-radius: 14px; padding: 26px; text-align: center; box-shadow: var(--shadow-sm); transition: transform .3s ease, box-shadow .3s ease; }
+  .mvv-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+  .mvv-card h3 { color: var(--gold-light); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+  .mvv-card p { font-size: 0.92rem; color: #dce8e0; }
   .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 18px; max-width: 1000px; margin: 0 auto; }
-  .value-card { text-align: center; padding: 20px; }
-  .value-card .ico { width: 46px; height: 46px; border-radius: 50%; background: var(--gold); color: var(--navy); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-weight: 800; }
-  .value-card h4 { color: var(--navy); margin-bottom: 6px; font-size: 0.98rem; }
+  .value-card { text-align: center; padding: 20px; border-radius: 12px; transition: transform .3s ease, background-color .3s ease; }
+  .value-card:hover { transform: translateY(-4px); background: var(--white); box-shadow: var(--shadow-sm); }
+  .value-card .ico { width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: var(--primary-dark); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-weight: 800; }
+  .value-card h4 { color: var(--primary); margin-bottom: 6px; font-size: 0.98rem; }
   .value-card p { color: var(--muted); font-size: 0.85rem; }
-  .programs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
-  .program-card { background: var(--white); border: 1px solid var(--border); border-top: 4px solid var(--gold); border-radius: 12px; padding: 24px; }
-  .program-card .stage-tag { font-size: 0.72rem; text-transform: uppercase; color: var(--gold); font-weight: 700; letter-spacing: 0.05em; }
-  .program-card h3 { color: var(--navy); margin: 8px 0 10px; font-size: 1.05rem; }
-  .program-card p { color: var(--muted); font-size: 0.86rem; margin-bottom: 12px; }
-  .program-card .fee { font-weight: 700; color: var(--navy); font-size: 0.88rem; }
+  .programs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 22px; max-width: 1100px; margin: 0 auto; }
+  .program-card { background: var(--white); border: 1px solid var(--border); border-top: 4px solid var(--gold); border-radius: 14px; padding: 26px; transition: transform .3s ease, box-shadow .3s ease; }
+  .program-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+  .program-card .stage-tag { font-size: 0.72rem; text-transform: uppercase; color: var(--gold); font-weight: 700; letter-spacing: 0.06em; }
+  .program-card h3 { color: var(--primary); margin: 8px 0 10px; font-size: 1.05rem; }
+  .program-card p { color: var(--muted); font-size: 0.86rem; margin-bottom: 14px; }
+  .program-card .fee { font-weight: 700; color: var(--primary); font-size: 0.88rem; }
   .activities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px,1fr)); gap: 18px; max-width: 1100px; margin: 0 auto; }
-  .activity-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 22px; text-align: center; }
+  .activity-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 24px; text-align: center; transition: transform .3s ease, box-shadow .3s ease; }
+  .activity-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
   .activity-card .emoji { font-size: 1.8rem; margin-bottom: 10px; }
-  .activity-card h4 { color: var(--navy); margin-bottom: 8px; font-size: 0.98rem; }
+  .activity-card h4 { color: var(--primary); margin-bottom: 8px; font-size: 0.98rem; }
   .activity-card p { color: var(--muted); font-size: 0.84rem; margin-bottom: 10px; }
   .activity-card .price { color: var(--gold); font-weight: 700; font-size: 0.82rem; }
-  .fee-table-wrap { max-width: 720px; margin: 0 auto 36px; background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
-  .fee-table-wrap h3 { color: var(--navy); margin-bottom: 4px; }
+  .fee-table-wrap { max-width: 720px; margin: 0 auto 36px; background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 28px; box-shadow: var(--shadow-sm); }
+  .fee-table-wrap h3 { color: var(--primary); margin-bottom: 4px; }
   .fee-table-wrap .sub { color: var(--muted); font-size: 0.85rem; margin-bottom: 18px; }
   table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-  table th, table td { text-align: left; padding: 9px 4px; border-bottom: 1px solid var(--border); }
-  table th { color: var(--muted); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; }
-  table td.amt { text-align: right; font-weight: 600; color: var(--navy); }
-  .total-row td { font-weight: 800; color: var(--navy); border-top: 2px solid var(--navy); }
-  .fee-note-box { max-width: 900px; margin: 0 auto; background: var(--cream); border: 1px solid var(--border); border-radius: 12px; padding: 26px; }
-  .fee-note-box h3 { color: var(--navy); margin-bottom: 14px; }
+  table th { text-align: left; padding: 10px 8px; font-weight: 700; color: var(--primary); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.03em; background: rgba(20,83,45,0.05); border-bottom: 2px solid rgba(20,83,45,0.16); }
+  table td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--border); transition: background-color .2s ease; }
+  table tr:nth-child(even) td { background: rgba(20,83,45,0.035); }
+  table tr:hover td { background: rgba(20,83,45,0.08); }
+  table td.amt { text-align: right; font-weight: 600; color: var(--primary); }
+  .total-row td { font-weight: 800; color: var(--primary-dark); border-top: 2px solid var(--primary); background: rgba(209,161,60,0.14) !important; }
+  .fee-note-box { max-width: 900px; margin: 0 auto; background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 28px; box-shadow: var(--shadow-sm); }
+  .fee-note-box h3 { color: var(--primary); margin-bottom: 14px; }
   .fee-note-box li { padding: 6px 0 6px 22px; position: relative; color: var(--muted); font-size: 0.88rem; }
   .fee-note-box li::before { content: "•"; position: absolute; left: 0; color: var(--gold); font-weight: 800; }
   .transport-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 14px; margin-top: 16px; }
-  .transport-card { background: var(--white); border-radius: 8px; padding: 14px; border: 1px solid var(--border); }
-  .transport-card .amt { color: var(--navy); font-weight: 800; font-size: 1.1rem; }
+  .transport-card { background: var(--cream); border-radius: 10px; padding: 16px; border: 1px solid var(--border); transition: transform .25s ease, box-shadow .25s ease; }
+  .transport-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+  .transport-card .amt { color: var(--primary); font-weight: 800; font-size: 1.1rem; }
   .transport-card .zones { color: var(--muted); font-size: 0.8rem; margin-top: 4px; }
-  .payment-note { background: #fff3cd; border: 1px solid #ffe08a; color: #7a5c00; padding: 12px 16px; border-radius: 8px; font-size: 0.85rem; margin-top: 18px; }
+  .payment-note { background: #fbf1d9; border: 1px solid #ecd7a3; color: #7a5c00; padding: 14px 16px; border-radius: 10px; font-size: 0.85rem; margin-top: 18px; }
   .uniform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1000px; margin: 0 auto 24px; }
   @media (max-width: 800px) { .uniform-grid { grid-template-columns: 1fr; } }
-  .uniform-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
-  .uniform-card h3 { color: var(--navy); margin-bottom: 4px; }
+  .uniform-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 26px; box-shadow: var(--shadow-sm); }
+  .uniform-card h3 { color: var(--primary); margin-bottom: 4px; }
   .uniform-card .sub { color: var(--muted); font-size: 0.82rem; margin-bottom: 14px; }
-  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 22px; max-width: 1050px; margin: 0 auto; }
-  .testimonial-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 26px; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 24px; max-width: 1050px; margin: 0 auto; }
+  .testimonial-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 28px; transition: transform .3s ease, box-shadow .3s ease; }
+  .testimonial-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
   .testimonial-card .stars { color: var(--gold); margin-bottom: 12px; letter-spacing: 2px; }
   .testimonial-card p.quote { color: var(--text); font-size: 0.92rem; margin-bottom: 16px; font-style: italic; }
-  .testimonial-card .who strong { color: var(--navy); display: block; font-size: 0.9rem; }
+  .testimonial-card .who strong { color: var(--primary); display: block; font-size: 0.9rem; }
   .testimonial-card .who span { color: var(--muted); font-size: 0.8rem; }
-  .admission-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 20px; max-width: 1000px; margin: 0 auto 30px; }
-  .admission-step { text-align: center; padding: 20px; }
-  .admission-step .step-num { width: 46px; height: 46px; border-radius: 50%; background: var(--gold); color: var(--navy); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-weight: 800; }
-  .admission-step h4 { color: var(--navy); font-size: 0.95rem; }
+  .admission-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 22px; max-width: 1000px; margin: 0 auto 32px; }
+  .admission-step { text-align: center; padding: 20px; border-radius: 12px; transition: transform .3s ease; }
+  .admission-step:hover { transform: translateY(-4px); }
+  .admission-step .step-num { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: var(--primary-dark); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-weight: 800; box-shadow: var(--shadow-sm); }
+  .admission-step h4 { color: var(--primary); font-size: 0.95rem; }
   .admission-center { text-align: center; }
-  .gallery-filters { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px; }
-  .gallery-filters button { background: var(--white); border: 1px solid var(--border); padding: 8px 14px; border-radius: 18px; font-size: 0.8rem; color: var(--navy); }
-  .gallery-filters button.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+  .gallery-filters { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px; }
+  .gallery-filters button { background: var(--white); border: 1px solid var(--border); padding: 8px 15px; border-radius: 18px; font-size: 0.8rem; color: var(--primary); transition: background-color .25s ease, color .25s ease, transform .25s ease; }
+  .gallery-filters button:hover { transform: translateY(-2px); }
+  .gallery-filters button.active { background: var(--primary); color: var(--white); border-color: var(--primary); }
   .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; max-width: 1000px; margin: 0 auto; }
-  .gallery-item { aspect-ratio: 4/3; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 600; font-size: 0.82rem; text-align: center; padding: 10px; }
-  .gallery-item:nth-child(1) { background: linear-gradient(135deg, #0f2438, #16324d); }
-  .gallery-item:nth-child(2) { background: linear-gradient(135deg, #d4a017, #f0c75e); color: #0f2438; }
-  .gallery-item:nth-child(3) { background: linear-gradient(135deg, #123524, #1d5138); }
-  .gallery-item:nth-child(4) { background: linear-gradient(135deg, #f0c75e, #d4a017); color: #0f2438; }
-  .gallery-item:nth-child(5) { background: linear-gradient(135deg, #16324d, #0f2438); }
-  .gallery-item:nth-child(6) { background: linear-gradient(135deg, #1d5138, #123524); }
-  .gallery-note { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 20px; }
+  .gallery-item { aspect-ratio: 4/3; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 600; font-size: 0.82rem; text-align: center; padding: 10px; transition: transform .3s ease, box-shadow .3s ease; }
+  .gallery-item:hover { transform: translateY(-6px) scale(1.02); box-shadow: var(--shadow-md); }
+  .gallery-item:nth-child(1) { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+  .gallery-item:nth-child(2) { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--primary-dark); }
+  .gallery-item:nth-child(3) { background: linear-gradient(135deg, var(--primary-2), var(--primary)); }
+  .gallery-item:nth-child(4) { background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: var(--primary-dark); }
+  .gallery-item:nth-child(5) { background: linear-gradient(135deg, var(--primary-dark), var(--primary-2)); }
+  .gallery-item:nth-child(6) { background: linear-gradient(135deg, var(--primary), var(--primary-2)); }
+  .gallery-note { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 22px; }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1050px; margin: 0 auto; }
   @media (max-width: 800px) { .contact-grid { grid-template-columns: 1fr; } }
   .contact-info-item { display: flex; gap: 14px; margin-bottom: 20px; }
-  .contact-info-item .ico { width: 40px; height: 40px; border-radius: 8px; background: var(--navy); color: var(--gold-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.05rem; }
-  .contact-info-item h4 { color: var(--navy); font-size: 0.92rem; margin-bottom: 2px; }
+  .contact-info-item .ico { width: 42px; height: 42px; border-radius: 10px; background: linear-gradient(135deg, var(--primary-2), var(--primary)); color: var(--gold-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.05rem; }
+  .contact-info-item h4 { color: var(--primary); font-size: 0.92rem; margin-bottom: 2px; }
   .contact-info-item p, .contact-info-item a { color: var(--muted); font-size: 0.88rem; }
   .contact-info-item a:hover { color: var(--gold); }
-  .whatsapp-btn { display: inline-block; margin-top: 6px; background: #25D366; color: var(--white); padding: 6px 14px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; }
-  .map-embed { width: 100%; height: 200px; background: #dfe4ea; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.82rem; margin-top: 16px; text-align: center; padding: 20px; }
+  .whatsapp-btn { display: inline-block; margin-top: 6px; background: #25D366; color: var(--white); padding: 6px 14px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; transition: transform .25s ease, box-shadow .25s ease; }
+  .whatsapp-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(37,211,102,0.35); }
+  .map-embed { width: 100%; height: 200px; background: var(--cream); border: 1px solid var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.82rem; margin-top: 16px; text-align: center; padding: 20px; }
   form { display: flex; flex-direction: column; gap: 14px; }
-  label { font-size: 0.83rem; font-weight: 600; color: var(--navy); margin-bottom: -8px; }
-  input, select, textarea { padding: 11px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.92rem; font-family: inherit; }
-  input:focus, select:focus, textarea:focus { outline: 2px solid var(--gold); border-color: var(--gold); }
+  label { font-size: 0.83rem; font-weight: 600; color: var(--primary); margin-bottom: -8px; }
+  input, select, textarea { padding: 11px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.92rem; font-family: inherit; transition: border-color .2s ease, box-shadow .2s ease; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(209,161,60,0.2); }
   .form-msg { display: none; background: #e6f6ec; color: #1e6b3a; padding: 12px 16px; border-radius: 8px; font-size: 0.88rem; }
   .form-msg.show { display: block; }
   .form-actions { display: flex; gap: 10px; flex-wrap: wrap; }
   .btn-wa { background: #25D366; color: var(--white); }
-  footer { background: var(--navy); color: #b8c2d1; padding: 50px 20px 24px; }
+  .btn-wa:hover { box-shadow: 0 10px 24px rgba(37,211,102,0.35); }
+  footer { background: var(--primary-dark); color: #b9c9bf; padding: 54px 20px 26px; }
   .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; max-width: 1180px; margin: 0 auto 32px; }
   @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr; } }
   .footer-grid h4 { color: var(--white); margin-bottom: 14px; font-size: 0.92rem; }
   .footer-grid li { margin-bottom: 8px; font-size: 0.85rem; }
+  .footer-grid a { transition: color .2s ease; }
   .footer-grid a:hover { color: var(--gold-light); }
-  .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 0.78rem; color: #8b96a8; max-width: 1180px; margin: 0 auto; }
+  .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 22px; font-size: 0.78rem; color: #8b9a91; max-width: 1180px; margin: 0 auto; }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--gold); outline-offset: 2px;
+  }
 </style>
 </head>
 <body>
@@ -198,49 +253,49 @@
 <section class="hero" id="home">
   <div class="hero-grid">
     <div>
-      <span class="eyebrow">Nairobi, Kenya · CBC 2-6-3-3-3</span>
-      <h1>Where Every Child Finds Their <em>Brilliance</em></h1>
-      <p class="motto">"Education is the Key to a Better Life"</p>
-      <p class="desc">Emmanuel Junior Centre School offers quality CBC education from Playgroup to Junior Secondary (Grade 9) — combining academic excellence, digital literacy, and a safe, faith-guided community, right at Kayole Junction, Nairobi.</p>
-      <div class="cta-group">
+      <span class="eyebrow hero-anim-1">Nairobi, Kenya · CBC 2-6-3-3-3</span>
+      <h1 class="hero-anim-2">Where Every Child Finds Their <em>Brilliance</em></h1>
+      <p class="motto hero-anim-3">"Education is the Key to a Better Life"</p>
+      <p class="desc hero-anim-4">Emmanuel Junior Centre School offers quality CBC education from Playgroup to Junior Secondary (Grade 9) — combining academic excellence, digital literacy, and a safe, faith-guided community, right at Kayole Junction, Nairobi.</p>
+      <div class="cta-group hero-anim-5">
         <a href="#contact" class="btn btn-primary">Apply for Admission</a>
         <a href="#fees" class="btn btn-outline">View Fees &amp; Uniform</a>
       </div>
-      <div class="stats-row">
+      <div class="stats-row hero-anim-6">
         <div class="stat-card"><div class="num">500+</div><div class="label">Students Enrolled</div></div>
         <div class="stat-card"><div class="num">98%</div><div class="label">Parent Satisfaction</div></div>
         <div class="stat-card"><div class="num">20+</div><div class="label">Qualified Teachers</div></div>
         <div class="stat-card"><div class="num">10+</div><div class="label">Years of Excellence</div></div>
       </div>
     </div>
-    <div class="hero-card">
+    <div class="hero-card hero-anim-7">
       <div class="campus-row"><div><strong>Emmanuel Junior Centre School (EJCS)</strong><span>Primary School</span></div><span>Playgroup – Grade 6</span></div>
       <div class="campus-row"><div><strong>Emmanuel Junior Secondary School (EJSS)</strong><span>Junior Secondary</span></div><span>Grade 7–9 · CBC Rated</span></div>
     </div>
   </div>
 </section>
 <section id="about">
-  <div class="section-head">
+  <div class="section-head reveal">
     <span class="tag">About Our School</span>
     <h2>Built on Faith, <em>Excellence</em> &amp; Community</h2>
     <p>Emmanuel Junior Centre School is a registered CBC school in Nairobi, Kenya, serving families at Kayole Junction. Our two campuses operate side by side to carry learners from Playgroup all the way through Grade 9.</p>
   </div>
-  <div class="campus-tags">
+  <div class="campus-tags reveal">
     <span class="campus-tag">🏫 EJCS — Primary School, Playgroup–Grade 6</span>
     <span class="campus-tag">🎓 EJSS — Junior Secondary, Grade 7–9 (CBC Rated)</span>
     <span class="campus-tag">📍 P.O. Box 75904-0200, Nairobi · Kayole Junction</span>
   </div>
-  <div class="pillars-grid">
+  <div class="pillars-grid reveal">
     <div class="pillar"><div class="ico">📘</div><h3>CBC Curriculum (2-6-3-3-3)</h3><p>Full CBC from Playgroup through Grade 9 — KNEC registered, with internal and external projects.</p></div>
     <div class="pillar"><div class="ico">💻</div><h3>Digital Literacy</h3><p>Technology integrated into every level — preparing learners for a digital Kenya and world.</p></div>
     <div class="pillar"><div class="ico">🛡️</div><h3>Safe, Gated Campus</h3><p>Secure compound with pastoral care, qualified teachers, and a caring school community.</p></div>
   </div>
-  <div class="mvv-grid">
+  <div class="mvv-grid reveal">
     <div class="mvv-card"><h3>Motto</h3><p>"Education is the Key to a Better Life"</p></div>
     <div class="mvv-card"><h3>Mission</h3><p>Nurturing holistic development in learners, in order to meet their expectation.</p></div>
     <div class="mvv-card"><h3>Vision</h3><p>Empower learners to realize their distinguished potential.</p></div>
   </div>
-  <div class="values-grid">
+  <div class="values-grid reveal">
     <div class="value-card"><div class="ico">✝</div><h4>Faith</h4><p>Christian values guiding every learner to be morally upright and spiritually grounded.</p></div>
     <div class="value-card"><div class="ico">★</div><h4>Excellence</h4><p>High standards inspiring every child to reach their fullest God-given potential.</p></div>
     <div class="value-card"><div class="ico">✓</div><h4>Integrity</h4><p>Honesty, respect and responsibility in every interaction and lesson.</p></div>
@@ -248,12 +303,12 @@
   </div>
 </section>
 <section class="alt-bg" id="programs">
-  <div class="section-head">
+  <div class="section-head reveal">
     <span class="tag">CBC 2-6-3-3-3 System</span>
     <h2>Learning at Every <em>Stage</em></h2>
     <p>2 years Pre-Primary · 6 years Primary · 3 years Junior Secondary — full Kenya CBC Curriculum from Playgroup to Grade 9.</p>
   </div>
-  <div class="programs-grid">
+  <div class="programs-grid reveal">
     <div class="program-card"><span class="stage-tag">Playgroup · Ages 2–4</span><h3>Playgroup / PP1 &amp; PP2</h3><p>Play-based early childhood education with digital literacy, clubs and remedial support included.</p><div class="fee">KSh 6,500 – 6,800 / term</div></div>
     <div class="program-card"><span class="stage-tag">Grade 1–3</span><h3>Lower Primary</h3><p>Core CBC subjects — English, Kiswahili, Maths, Science &amp; Social Studies with small class sizes.</p><div class="fee">KSh 7,500 – 8,000 / term</div></div>
     <div class="program-card"><span class="stage-tag">Grade 4–6</span><h3>Upper Primary</h3><p>Advanced CBC learning with internal projects, book fund support and extracurricular activities.</p><div class="fee">KSh 9,500 – 11,000 / term</div></div>
@@ -263,12 +318,12 @@
   </div>
 </section>
 <section id="activities">
-  <div class="section-head">
+  <div class="section-head reveal">
     <span class="tag">Co-Curricular</span>
     <h2>Activities &amp; <em>Clubs</em></h2>
     <p>KSh 1,000 / term per activity. Our students shine far beyond the classroom.</p>
   </div>
-  <div class="activities-grid">
+  <div class="activities-grid reveal">
     <div class="activity-card"><div class="emoji">⛸️</div><h4>Skating</h4><p>Inline skating — balance, coordination and confidence for all levels.</p><div class="price">KSh 1,000/term</div></div>
     <div class="activity-card"><div class="emoji">🏕️</div><h4>Scouts</h4><p>Kenya Scouts — leadership, community service and outdoor adventure skills.</p><div class="price">KSh 1,000/term</div></div>
     <div class="activity-card"><div class="emoji">🥋</div><h4>Taekwondo</h4><p>Certified Taekwondo training — discipline, self-defence and confidence.</p><div class="price">KSh 1,000/term</div></div>
@@ -280,12 +335,12 @@
   </div>
 </section>
 <section class="alt-bg" id="fees">
-  <div class="section-head">
+  <div class="section-head reveal">
     <span class="tag">2026 Fee Structure</span>
     <h2>Transparent <em>Fees</em></h2>
     <p>All fees include remedial classes, digital literacy, maintenance and clubs.</p>
   </div>
-  <div class="fee-table-wrap">
+  <div class="fee-table-wrap reveal">
     <h3>Playgroup / PP1 — Ages 2–4</h3>
     <p class="sub">Termly breakdown</p>
     <table>
@@ -306,7 +361,7 @@
       <tr><td>School Diary (yearly)</td><td class="amt">KSh 300</td></tr>
     </table>
   </div>
-  <div class="fee-table-wrap">
+  <div class="fee-table-wrap reveal">
     <h3>Other Stages — Termly Fee Ranges</h3>
     <p class="sub">Contact the school office for the full itemized breakdown per stage</p>
     <table>
@@ -318,7 +373,7 @@
       <tr><td>Grade 9 (JSS)</td><td class="amt">KSh 14,000</td></tr>
     </table>
   </div>
-  <div class="fee-note-box">
+  <div class="fee-note-box reveal">
     <h3>📋 Notes &amp; Payment</h3>
     <ul>
       <li>Birth certificate copy required when joining school</li>
@@ -337,12 +392,12 @@
   </div>
 </section>
 <section id="uniform">
-  <div class="section-head">
+  <div class="section-head reveal">
     <span class="tag">School Uniform</span>
     <h2>Dress for <em>Success</em></h2>
     <p>All uniforms available in school. Smart and affordable pricing.</p>
   </div>
-  <div class="uniform-grid">
+  <div class="uniform-grid reveal">
     <div class="uniform-card">
       <h3>Boys Uniform</h3>
       <p class="sub">Playgroup – Grade 6</p>
@@ -392,7 +447,7 @@
       </table>
     </div>
   </div>
-  <div class="uniform-grid">
+  <div class="uniform-grid reveal">
     <div class="uniform-card">
       <h3>Boys — JSS Uniform</h3>
       <p class="sub">Grade 7–9</p>
@@ -436,43 +491,43 @@
   </div>
 </section>
 <section class="alt-bg">
-  <div class="section-head">
+  <div class="section-head reveal">
     <span class="tag">Parent Testimonials</span>
     <h2>Voices from Our <em>Community</em></h2>
   </div>
-  <div class="testimonials-grid">
+  <div class="testimonials-grid reveal">
     <div class="testimonial-card"><div class="stars">★★★★★</div><p class="quote">"My daughter has blossomed since joining Emmanuel Junior. The teachers are dedicated and she is excited to learn every day."</p><div class="who"><strong>Anne W.</strong><span>Parent · Kayole</span></div></div>
     <div class="testimonial-card"><div class="stars">★★★★★</div><p class="quote">"The CBC implementation here is excellent. My son joined Grade 7 and the transition was smooth."</p><div class="who"><strong>James K.</strong><span>Parent · Komarocks</span></div></div>
     <div class="testimonial-card"><div class="stars">★★★★★</div><p class="quote">"Three children here from Playgroup to Grade 6. The skating and scouts clubs are a big favourite."</p><div class="who"><strong>Mary N.</strong><span>Parent · Umoja</span></div></div>
   </div>
 </section>
 <section id="admission">
-  <div class="section-head">
+  <div class="section-head reveal">
     <span class="tag">Admission 2025/2026</span>
     <h2>Join Our School <em>Family</em></h2>
     <p>Enrolment open for all levels — Playgroup to Grade 9. Free interview. Spaces limited.</p>
   </div>
-  <div class="admission-steps">
+  <div class="admission-steps reveal">
     <div class="admission-step"><div class="step-num">1</div><h4>Free Interview</h4></div>
     <div class="admission-step"><div class="step-num">2</div><h4>Submit Documents</h4></div>
     <div class="admission-step"><div class="step-num">3</div><h4>Pay Admission (KSh 500)</h4></div>
     <div class="admission-step"><div class="step-num">4</div><h4>Orientation &amp; Start</h4></div>
   </div>
-  <div class="admission-center">
+  <div class="admission-center reveal">
     <a href="#contact" class="btn btn-primary">Apply Now — It's Free →</a>
   </div>
 </section>
 <section class="alt-bg" id="gallery">
-  <div class="section-head">
+  <div class="section-head reveal">
     <span class="tag">School Life</span>
     <h2>Photos &amp; <em>Videos</em></h2>
     <p>Moments from our classrooms, events, activities and clubs.</p>
   </div>
-  <div class="gallery-filters">
+  <div class="gallery-filters reveal">
     <button class="active">All</button><button>Photos</button><button>Videos</button><button>Events</button><button>Sports</button>
     <button>⛸️ Skating</button><button>🏕️ Scouts</button><button>🥋 Taekwondo</button><button>💻 Coding</button>
   </div>
-  <div class="gallery-grid">
+  <div class="gallery-grid reveal">
     <div class="gallery-item">Classroom Learning</div>
     <div class="gallery-item">School Grounds</div>
     <div class="gallery-item">Sports Day</div>
@@ -483,12 +538,12 @@
   <p class="gallery-note">📸 Placeholder tiles shown — the school hasn't uploaded real photos/videos yet. Swap these for actual images once available.</p>
 </section>
 <section id="contact">
-  <div class="section-head">
+  <div class="section-head reveal">
     <span class="tag">Get In Touch</span>
     <h2>We'd Love to Hear <em>from You</em></h2>
     <p>Questions about admissions, fees or activities? We're always happy to help.</p>
   </div>
-  <div class="contact-grid">
+  <div class="contact-grid reveal">
     <div>
       <div class="contact-info-item"><div class="ico">📍</div><div><h4>Address</h4><p>P.O. Box 75904-0200, Nairobi, Kenya — Kayole Junction</p></div></div>
       <div class="contact-info-item"><div class="ico">📞</div><div><h4>Phone / WhatsApp</h4><p><a href="tel:+254726517906">+254 726 517 906</a></p><a href="https://wa.me/254726517906" class="whatsapp-btn">Chat on WhatsApp ↗</a></div></div>
@@ -587,6 +642,56 @@
       btn.classList.add('active');
     });
   });
+
+  /* Scroll-reveal for sections/grids */
+  var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !prefersReducedMotion) {
+    var revealIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealIO.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function (el) { revealIO.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  /* Count-up animation for hero stats */
+  function animateCount(el) {
+    var text = el.textContent.trim();
+    var match = text.match(/^(\d+)(.*)$/);
+    if (!match) return;
+    var target = parseInt(match[1], 10);
+    var suffix = match[2] || '';
+    if (prefersReducedMotion) { el.textContent = target + suffix; return; }
+    var duration = 1200;
+    var startTime = null;
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var progress = Math.min((ts - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target) + suffix;
+      if (progress < 1) { requestAnimationFrame(step); }
+      else { el.textContent = target + suffix; }
+    }
+    requestAnimationFrame(step);
+  }
+  var statNums = document.querySelectorAll('.stat-card .num');
+  if ('IntersectionObserver' in window) {
+    var statIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          statIO.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    statNums.forEach(function (n) { statIO.observe(n); });
+  }
 </script>
 </body>
 </html>
