@@ -1,12 +1,592 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Emmanuel Junior Centre School</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emmanuel Junior Centre School | CBC School Kayole Junction, Nairobi | Grade 1–9</title>
+<style>
+  :root {
+    --navy: #0f2438;
+    --navy-2: #16324d;
+    --gold: #d4a017;
+    --gold-light: #f0c75e;
+    --green: #123524;
+    --cream: #faf7ef;
+    --text: #232323;
+    --muted: #667085;
+    --white: #ffffff;
+    --border: #e6e2d8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--text); background: var(--cream); line-height: 1.6; }
+  a { text-decoration: none; color: inherit; }
+  img, svg { max-width: 100%; display: block; }
+  ul { list-style: none; }
+  button { font-family: inherit; cursor: pointer; }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+  header { background: var(--navy); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 12px rgba(0,0,0,0.18); }
+  .navbar { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; max-width: 1180px; margin: 0 auto; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--white); }
+  .brand-badge { width: 42px; height: 42px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; color: var(--navy); font-weight: 800; font-size: 1rem; flex-shrink: 0; }
+  .brand-text strong { display: block; font-size: 1.02rem; font-weight: 700; }
+  .brand-text span { display: block; font-size: 0.72rem; color: var(--gold-light); font-style: italic; }
+  nav ul { display: flex; gap: 22px; align-items: center; }
+  nav a { color: var(--white); font-weight: 500; font-size: 0.88rem; }
+  nav a:hover { color: var(--gold-light); }
+  .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 9px 16px; border-radius: 6px; font-weight: 700 !important; }
+  .nav-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.6rem; }
+  @media (max-width: 900px) {
+    nav ul { display: none; flex-direction: column; align-items: flex-start; position: absolute; top: 66px; left: 0; right: 0; background: var(--navy-2); padding: 18px 20px; gap: 14px; }
+    nav ul.open { display: flex; }
+    .nav-toggle { display: block; }
+  }
+  .hero { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%); color: var(--white); padding: 70px 20px 80px; }
+  .hero-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; }
+  @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
+  .eyebrow { display: inline-block; background: rgba(212,160,23,0.18); border: 1px solid rgba(212,160,23,0.35); color: var(--gold-light); padding: 6px 16px; border-radius: 20px; font-size: 0.78rem; letter-spacing: 0.04em; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(2rem, 4.5vw, 2.9rem); margin-bottom: 14px; font-weight: 800; line-height: 1.15; }
+  .hero h1 em { color: var(--gold-light); font-style: normal; }
+  .hero .motto { color: var(--gold-light); font-style: italic; margin-bottom: 16px; font-size: 1.02rem; }
+  .hero p.desc { color: #cfd8e3; margin-bottom: 26px; font-size: 1rem; max-width: 540px; }
+  .cta-group { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 34px; }
+  .btn { display: inline-block; padding: 12px 24px; border-radius: 8px; font-weight: 600; font-size: 0.92rem; border: 2px solid transparent; transition: transform .15s, box-shadow .15s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--gold); color: var(--navy); }
+  .btn-primary:hover { box-shadow: 0 6px 18px rgba(212,160,23,0.4); }
+  .btn-outline { border-color: rgba(255,255,255,0.45); color: var(--white); }
+  .btn-outline:hover { background: rgba(255,255,255,0.08); }
+  .stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+  .stat-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 14px 10px; text-align: center; }
+  .stat-card .num { color: var(--gold-light); font-weight: 800; font-size: 1.4rem; }
+  .stat-card .label { font-size: 0.72rem; color: #cfd8e3; margin-top: 2px; }
+  @media (max-width: 560px) { .stats-row { grid-template-columns: repeat(2,1fr); } }
+  .hero-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 26px; }
+  .hero-card .campus-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .hero-card .campus-row:last-child { border-bottom: none; }
+  .hero-card .campus-row strong { display: block; color: var(--white); font-size: 0.95rem; }
+  .hero-card .campus-row span { color: #b9c4d3; font-size: 0.82rem; }
+  section { padding: 64px 20px; }
+  .section-head { text-align: center; max-width: 640px; margin: 0 auto 44px; }
+  .section-head .tag { color: var(--gold); font-weight: 700; text-transform: uppercase; font-size: 0.76rem; letter-spacing: 0.08em; }
+  .section-head h2 { font-size: clamp(1.55rem, 3vw, 2.1rem); margin: 8px 0 10px; color: var(--navy); }
+  .section-head h2 em { color: var(--gold); font-style: normal; }
+  .section-head p { color: var(--muted); font-size: 0.96rem; }
+  .alt-bg { background: var(--white); }
+  .campus-tags { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+  .campus-tag { background: var(--cream); border: 1px solid var(--border); border-radius: 10px; padding: 12px 20px; font-size: 0.85rem; color: var(--navy); font-weight: 600; }
+  .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 20px; max-width: 1000px; margin: 0 auto 44px; }
+  .pillar { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 26px; text-align: center; }
+  .pillar .ico { width: 50px; height: 50px; border-radius: 50%; background: var(--navy); color: var(--gold-light); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; font-size: 1.3rem; }
+  .pillar h3 { color: var(--navy); margin-bottom: 8px; font-size: 1.02rem; }
+  .pillar p { color: var(--muted); font-size: 0.88rem; }
+  .mvv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto 44px; }
+  @media (max-width: 800px) { .mvv-grid { grid-template-columns: 1fr; } }
+  .mvv-card { background: var(--navy); color: var(--white); border-radius: 12px; padding: 24px; text-align: center; }
+  .mvv-card h3 { color: var(--gold-light); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
+  .mvv-card p { font-size: 0.92rem; color: #dbe2ea; }
+  .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 18px; max-width: 1000px; margin: 0 auto; }
+  .value-card { text-align: center; padding: 20px; }
+  .value-card .ico { width: 46px; height: 46px; border-radius: 50%; background: var(--gold); color: var(--navy); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-weight: 800; }
+  .value-card h4 { color: var(--navy); margin-bottom: 6px; font-size: 0.98rem; }
+  .value-card p { color: var(--muted); font-size: 0.85rem; }
+  .programs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
+  .program-card { background: var(--white); border: 1px solid var(--border); border-top: 4px solid var(--gold); border-radius: 12px; padding: 24px; }
+  .program-card .stage-tag { font-size: 0.72rem; text-transform: uppercase; color: var(--gold); font-weight: 700; letter-spacing: 0.05em; }
+  .program-card h3 { color: var(--navy); margin: 8px 0 10px; font-size: 1.05rem; }
+  .program-card p { color: var(--muted); font-size: 0.86rem; margin-bottom: 12px; }
+  .program-card .fee { font-weight: 700; color: var(--navy); font-size: 0.88rem; }
+  .activities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px,1fr)); gap: 18px; max-width: 1100px; margin: 0 auto; }
+  .activity-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 22px; text-align: center; }
+  .activity-card .emoji { font-size: 1.8rem; margin-bottom: 10px; }
+  .activity-card h4 { color: var(--navy); margin-bottom: 8px; font-size: 0.98rem; }
+  .activity-card p { color: var(--muted); font-size: 0.84rem; margin-bottom: 10px; }
+  .activity-card .price { color: var(--gold); font-weight: 700; font-size: 0.82rem; }
+  .fee-table-wrap { max-width: 720px; margin: 0 auto 36px; background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
+  .fee-table-wrap h3 { color: var(--navy); margin-bottom: 4px; }
+  .fee-table-wrap .sub { color: var(--muted); font-size: 0.85rem; margin-bottom: 18px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  table th, table td { text-align: left; padding: 9px 4px; border-bottom: 1px solid var(--border); }
+  table th { color: var(--muted); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; }
+  table td.amt { text-align: right; font-weight: 600; color: var(--navy); }
+  .total-row td { font-weight: 800; color: var(--navy); border-top: 2px solid var(--navy); }
+  .fee-note-box { max-width: 900px; margin: 0 auto; background: var(--cream); border: 1px solid var(--border); border-radius: 12px; padding: 26px; }
+  .fee-note-box h3 { color: var(--navy); margin-bottom: 14px; }
+  .fee-note-box li { padding: 6px 0 6px 22px; position: relative; color: var(--muted); font-size: 0.88rem; }
+  .fee-note-box li::before { content: "•"; position: absolute; left: 0; color: var(--gold); font-weight: 800; }
+  .transport-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 14px; margin-top: 16px; }
+  .transport-card { background: var(--white); border-radius: 8px; padding: 14px; border: 1px solid var(--border); }
+  .transport-card .amt { color: var(--navy); font-weight: 800; font-size: 1.1rem; }
+  .transport-card .zones { color: var(--muted); font-size: 0.8rem; margin-top: 4px; }
+  .payment-note { background: #fff3cd; border: 1px solid #ffe08a; color: #7a5c00; padding: 12px 16px; border-radius: 8px; font-size: 0.85rem; margin-top: 18px; }
+  .uniform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1000px; margin: 0 auto 24px; }
+  @media (max-width: 800px) { .uniform-grid { grid-template-columns: 1fr; } }
+  .uniform-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+  .uniform-card h3 { color: var(--navy); margin-bottom: 4px; }
+  .uniform-card .sub { color: var(--muted); font-size: 0.82rem; margin-bottom: 14px; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 22px; max-width: 1050px; margin: 0 auto; }
+  .testimonial-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 26px; }
+  .testimonial-card .stars { color: var(--gold); margin-bottom: 12px; letter-spacing: 2px; }
+  .testimonial-card p.quote { color: var(--text); font-size: 0.92rem; margin-bottom: 16px; font-style: italic; }
+  .testimonial-card .who strong { color: var(--navy); display: block; font-size: 0.9rem; }
+  .testimonial-card .who span { color: var(--muted); font-size: 0.8rem; }
+  .admission-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 20px; max-width: 1000px; margin: 0 auto 30px; }
+  .admission-step { text-align: center; padding: 20px; }
+  .admission-step .step-num { width: 46px; height: 46px; border-radius: 50%; background: var(--gold); color: var(--navy); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-weight: 800; }
+  .admission-step h4 { color: var(--navy); font-size: 0.95rem; }
+  .admission-center { text-align: center; }
+  .gallery-filters { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px; }
+  .gallery-filters button { background: var(--white); border: 1px solid var(--border); padding: 8px 14px; border-radius: 18px; font-size: 0.8rem; color: var(--navy); }
+  .gallery-filters button.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; max-width: 1000px; margin: 0 auto; }
+  .gallery-item { aspect-ratio: 4/3; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 600; font-size: 0.82rem; text-align: center; padding: 10px; }
+  .gallery-item:nth-child(1) { background: linear-gradient(135deg, #0f2438, #16324d); }
+  .gallery-item:nth-child(2) { background: linear-gradient(135deg, #d4a017, #f0c75e); color: #0f2438; }
+  .gallery-item:nth-child(3) { background: linear-gradient(135deg, #123524, #1d5138); }
+  .gallery-item:nth-child(4) { background: linear-gradient(135deg, #f0c75e, #d4a017); color: #0f2438; }
+  .gallery-item:nth-child(5) { background: linear-gradient(135deg, #16324d, #0f2438); }
+  .gallery-item:nth-child(6) { background: linear-gradient(135deg, #1d5138, #123524); }
+  .gallery-note { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 20px; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1050px; margin: 0 auto; }
+  @media (max-width: 800px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-info-item { display: flex; gap: 14px; margin-bottom: 20px; }
+  .contact-info-item .ico { width: 40px; height: 40px; border-radius: 8px; background: var(--navy); color: var(--gold-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.05rem; }
+  .contact-info-item h4 { color: var(--navy); font-size: 0.92rem; margin-bottom: 2px; }
+  .contact-info-item p, .contact-info-item a { color: var(--muted); font-size: 0.88rem; }
+  .contact-info-item a:hover { color: var(--gold); }
+  .whatsapp-btn { display: inline-block; margin-top: 6px; background: #25D366; color: var(--white); padding: 6px 14px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; }
+  .map-embed { width: 100%; height: 200px; background: #dfe4ea; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.82rem; margin-top: 16px; text-align: center; padding: 20px; }
+  form { display: flex; flex-direction: column; gap: 14px; }
+  label { font-size: 0.83rem; font-weight: 600; color: var(--navy); margin-bottom: -8px; }
+  input, select, textarea { padding: 11px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.92rem; font-family: inherit; }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--gold); border-color: var(--gold); }
+  .form-msg { display: none; background: #e6f6ec; color: #1e6b3a; padding: 12px 16px; border-radius: 8px; font-size: 0.88rem; }
+  .form-msg.show { display: block; }
+  .form-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn-wa { background: #25D366; color: var(--white); }
+  footer { background: var(--navy); color: #b8c2d1; padding: 50px 20px 24px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; max-width: 1180px; margin: 0 auto 32px; }
+  @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr; } }
+  .footer-grid h4 { color: var(--white); margin-bottom: 14px; font-size: 0.92rem; }
+  .footer-grid li { margin-bottom: 8px; font-size: 0.85rem; }
+  .footer-grid a:hover { color: var(--gold-light); }
+  .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 0.78rem; color: #8b96a8; max-width: 1180px; margin: 0 auto; }
+</style>
 </head>
 <body>
-  <h1>Emmanuel Junior Centre School</h1>
-  <p>Site content coming soon.</p>
+<header>
+  <div class="navbar">
+    <a href="#home" class="brand">
+      <span class="brand-badge">EJ</span>
+      <span class="brand-text"><strong>Emmanuel Junior Centre School</strong><span>Education is the Key to a Better Life</span></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+    <nav>
+      <ul id="navMenu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#activities">Activities</a></li>
+        <li><a href="#fees">Fees</a></li>
+        <li><a href="#uniform">Uniform</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="nav-cta">Enroll Now</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<section class="hero" id="home">
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow">Nairobi, Kenya · CBC 2-6-3-3-3</span>
+      <h1>Where Every Child Finds Their <em>Brilliance</em></h1>
+      <p class="motto">"Education is the Key to a Better Life"</p>
+      <p class="desc">Emmanuel Junior Centre School offers quality CBC education from Playgroup to Junior Secondary (Grade 9) — combining academic excellence, digital literacy, and a safe, faith-guided community, right at Kayole Junction, Nairobi.</p>
+      <div class="cta-group">
+        <a href="#contact" class="btn btn-primary">Apply for Admission</a>
+        <a href="#fees" class="btn btn-outline">View Fees &amp; Uniform</a>
+      </div>
+      <div class="stats-row">
+        <div class="stat-card"><div class="num">500+</div><div class="label">Students Enrolled</div></div>
+        <div class="stat-card"><div class="num">98%</div><div class="label">Parent Satisfaction</div></div>
+        <div class="stat-card"><div class="num">20+</div><div class="label">Qualified Teachers</div></div>
+        <div class="stat-card"><div class="num">10+</div><div class="label">Years of Excellence</div></div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="campus-row"><div><strong>Emmanuel Junior Centre School (EJCS)</strong><span>Primary School</span></div><span>Playgroup – Grade 6</span></div>
+      <div class="campus-row"><div><strong>Emmanuel Junior Secondary School (EJSS)</strong><span>Junior Secondary</span></div><span>Grade 7–9 · CBC Rated</span></div>
+    </div>
+  </div>
+</section>
+<section id="about">
+  <div class="section-head">
+    <span class="tag">About Our School</span>
+    <h2>Built on Faith, <em>Excellence</em> &amp; Community</h2>
+    <p>Emmanuel Junior Centre School is a registered CBC school in Nairobi, Kenya, serving families at Kayole Junction. Our two campuses operate side by side to carry learners from Playgroup all the way through Grade 9.</p>
+  </div>
+  <div class="campus-tags">
+    <span class="campus-tag">🏫 EJCS — Primary School, Playgroup–Grade 6</span>
+    <span class="campus-tag">🎓 EJSS — Junior Secondary, Grade 7–9 (CBC Rated)</span>
+    <span class="campus-tag">📍 P.O. Box 75904-0200, Nairobi · Kayole Junction</span>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar"><div class="ico">📘</div><h3>CBC Curriculum (2-6-3-3-3)</h3><p>Full CBC from Playgroup through Grade 9 — KNEC registered, with internal and external projects.</p></div>
+    <div class="pillar"><div class="ico">💻</div><h3>Digital Literacy</h3><p>Technology integrated into every level — preparing learners for a digital Kenya and world.</p></div>
+    <div class="pillar"><div class="ico">🛡️</div><h3>Safe, Gated Campus</h3><p>Secure compound with pastoral care, qualified teachers, and a caring school community.</p></div>
+  </div>
+  <div class="mvv-grid">
+    <div class="mvv-card"><h3>Motto</h3><p>"Education is the Key to a Better Life"</p></div>
+    <div class="mvv-card"><h3>Mission</h3><p>Nurturing holistic development in learners, in order to meet their expectation.</p></div>
+    <div class="mvv-card"><h3>Vision</h3><p>Empower learners to realize their distinguished potential.</p></div>
+  </div>
+  <div class="values-grid">
+    <div class="value-card"><div class="ico">✝</div><h4>Faith</h4><p>Christian values guiding every learner to be morally upright and spiritually grounded.</p></div>
+    <div class="value-card"><div class="ico">★</div><h4>Excellence</h4><p>High standards inspiring every child to reach their fullest God-given potential.</p></div>
+    <div class="value-card"><div class="ico">✓</div><h4>Integrity</h4><p>Honesty, respect and responsibility in every interaction and lesson.</p></div>
+    <div class="value-card"><div class="ico">⚡</div><h4>Innovation</h4><p>Digital literacy and modern CBC pedagogy preparing learners for tomorrow's Kenya.</p></div>
+  </div>
+</section>
+<section class="alt-bg" id="programs">
+  <div class="section-head">
+    <span class="tag">CBC 2-6-3-3-3 System</span>
+    <h2>Learning at Every <em>Stage</em></h2>
+    <p>2 years Pre-Primary · 6 years Primary · 3 years Junior Secondary — full Kenya CBC Curriculum from Playgroup to Grade 9.</p>
+  </div>
+  <div class="programs-grid">
+    <div class="program-card"><span class="stage-tag">Playgroup · Ages 2–4</span><h3>Playgroup / PP1 &amp; PP2</h3><p>Play-based early childhood education with digital literacy, clubs and remedial support included.</p><div class="fee">KSh 6,500 – 6,800 / term</div></div>
+    <div class="program-card"><span class="stage-tag">Grade 1–3</span><h3>Lower Primary</h3><p>Core CBC subjects — English, Kiswahili, Maths, Science &amp; Social Studies with small class sizes.</p><div class="fee">KSh 7,500 – 8,000 / term</div></div>
+    <div class="program-card"><span class="stage-tag">Grade 4–6</span><h3>Upper Primary</h3><p>Advanced CBC learning with internal projects, book fund support and extracurricular activities.</p><div class="fee">KSh 9,500 – 11,000 / term</div></div>
+    <div class="program-card"><span class="stage-tag">Grade 7 · JSS</span><h3>Grade 7 — JSS</h3><p>CBC Junior Secondary School — KNEC registered, project-based learning and digital integration.</p><div class="fee">KSh 13,500 / term</div></div>
+    <div class="program-card"><span class="stage-tag">Grade 8 · JSS</span><h3>Grade 8 — JSS</h3><p>Deepened subject specialisation, KNEC projects, practical examinations and mentorship programmes.</p><div class="fee">KSh 13,500 / term</div></div>
+    <div class="program-card"><span class="stage-tag">Grade 9 · JSS</span><h3>Grade 9 — JSS</h3><p>Final year of Junior Secondary — KNEC practical, KPSEA transition preparation and career guidance.</p><div class="fee">KSh 14,000 / term</div></div>
+  </div>
+</section>
+<section id="activities">
+  <div class="section-head">
+    <span class="tag">Co-Curricular</span>
+    <h2>Activities &amp; <em>Clubs</em></h2>
+    <p>KSh 1,000 / term per activity. Our students shine far beyond the classroom.</p>
+  </div>
+  <div class="activities-grid">
+    <div class="activity-card"><div class="emoji">⛸️</div><h4>Skating</h4><p>Inline skating — balance, coordination and confidence for all levels.</p><div class="price">KSh 1,000/term</div></div>
+    <div class="activity-card"><div class="emoji">🏕️</div><h4>Scouts</h4><p>Kenya Scouts — leadership, community service and outdoor adventure skills.</p><div class="price">KSh 1,000/term</div></div>
+    <div class="activity-card"><div class="emoji">🥋</div><h4>Taekwondo</h4><p>Certified Taekwondo training — discipline, self-defence and confidence.</p><div class="price">KSh 1,000/term</div></div>
+    <div class="activity-card"><div class="emoji">💻</div><h4>Coding Club</h4><p>Scratch, Python basics and computational thinking for young innovators.</p><div class="price">KSh 1,000/term</div></div>
+    <div class="activity-card"><div class="emoji">🎵</div><h4>Music</h4><p>Choir, instruments and performance — nurturing artistic talent and expression.</p><div class="price">KSh 1,000/term</div></div>
+    <div class="activity-card"><div class="emoji">🤸</div><h4>Acrobatics</h4><p>Gymnastics and acrobatics building flexibility, strength and team spirit.</p><div class="price">KSh 1,000/term</div></div>
+    <div class="activity-card"><div class="emoji">🌱</div><h4>Environment Club</h4><p>Gardening, recycling and environmental stewardship for a greener future.</p><div class="price">KSh 1,000/term</div></div>
+    <div class="activity-card"><div class="emoji">🤟</div><h4>Sign Language</h4><p>Kenyan Sign Language — inclusivity, communication and empathy.</p><div class="price">KSh 1,000/term</div></div>
+  </div>
+</section>
+<section class="alt-bg" id="fees">
+  <div class="section-head">
+    <span class="tag">2026 Fee Structure</span>
+    <h2>Transparent <em>Fees</em></h2>
+    <p>All fees include remedial classes, digital literacy, maintenance and clubs.</p>
+  </div>
+  <div class="fee-table-wrap">
+    <h3>Playgroup / PP1 — Ages 2–4</h3>
+    <p class="sub">Termly breakdown</p>
+    <table>
+      <tr><th>Item</th><th style="text-align:right;">Amount</th></tr>
+      <tr><td>School Fees</td><td class="amt">KSh 6,200</td></tr>
+      <tr><td>Exams</td><td class="amt">KSh 300</td></tr>
+      <tr class="total-row"><td>Total / Term</td><td class="amt">KSh 6,500</td></tr>
+    </table>
+    <table style="margin-top:16px;">
+      <tr><th>Optional – Feeding</th><th style="text-align:right;"></th></tr>
+      <tr><td>Breakfast</td><td class="amt">KSh 600</td></tr>
+      <tr><td>Lunch</td><td class="amt">KSh 3,000</td></tr>
+    </table>
+    <table style="margin-top:16px;">
+      <tr><th>One-Time / Additional</th><th style="text-align:right;"></th></tr>
+      <tr><td>Admission Fee (once)</td><td class="amt">KSh 500</td></tr>
+      <tr><td>Assessment Book (yearly)</td><td class="amt">KSh 500</td></tr>
+      <tr><td>School Diary (yearly)</td><td class="amt">KSh 300</td></tr>
+    </table>
+  </div>
+  <div class="fee-table-wrap">
+    <h3>Other Stages — Termly Fee Ranges</h3>
+    <p class="sub">Contact the school office for the full itemized breakdown per stage</p>
+    <table>
+      <tr><th>Stage</th><th style="text-align:right;">Fee / Term</th></tr>
+      <tr><td>Lower Primary (Grade 1–3)</td><td class="amt">KSh 7,500 – 8,000</td></tr>
+      <tr><td>Upper Primary (Grade 4–6)</td><td class="amt">KSh 9,500 – 11,000</td></tr>
+      <tr><td>Grade 7 (JSS)</td><td class="amt">KSh 13,500</td></tr>
+      <tr><td>Grade 8 (JSS)</td><td class="amt">KSh 13,500</td></tr>
+      <tr><td>Grade 9 (JSS)</td><td class="amt">KSh 14,000</td></tr>
+    </table>
+  </div>
+  <div class="fee-note-box">
+    <h3>📋 Notes &amp; Payment</h3>
+    <ul>
+      <li>Birth certificate copy required when joining school</li>
+      <li>Fees cleared within first two months of the term</li>
+      <li>Pupils carry packed snacks &amp; water — no money allowed in school</li>
+      <li>Educational trips charged per cost of venue</li>
+      <li>Extra co-curricular activities KSh 1,000/term each (Skating, Scouts, Taekwondo, etc.)</li>
+    </ul>
+    <h3 style="margin-top:22px;">🚌 Transport Charges (Per Term)</h3>
+    <div class="transport-grid">
+      <div class="transport-card"><div class="amt">KSh 4,500</div><div class="zones">Kayole 1, Matopeni, Maana, Obama, Komarocks, Saika, Spring Valley</div></div>
+      <div class="transport-card"><div class="amt">KSh 5,000</div><div class="zones">Njiru, Kirima, Mowlem, Nyamavilla, Masimba</div></div>
+      <div class="transport-card"><div class="amt">KSh 6,000</div><div class="zones">Umoja, Chokaa</div></div>
+    </div>
+    <div class="payment-note">Payment options: KCB M-Pesa, Equity M-Pesa, Equity Bank, KCB Bank, and Family Bank accounts are accepted. Contact the school office directly on <a href="tel:+254726517906" style="color:#7a5c00;font-weight:700;">+254 726 517 906</a> for current paybill and account numbers before making a payment.</div>
+  </div>
+</section>
+<section id="uniform">
+  <div class="section-head">
+    <span class="tag">School Uniform</span>
+    <h2>Dress for <em>Success</em></h2>
+    <p>All uniforms available in school. Smart and affordable pricing.</p>
+  </div>
+  <div class="uniform-grid">
+    <div class="uniform-card">
+      <h3>Boys Uniform</h3>
+      <p class="sub">Playgroup – Grade 6</p>
+      <table>
+        <tr><td>Trouser (Navy Blue) 18–24</td><td class="amt">KSh 500</td></tr>
+        <tr><td>Trouser 26–28</td><td class="amt">KSh 600</td></tr>
+        <tr><td>Trouser 30+</td><td class="amt">KSh 650</td></tr>
+        <tr><td>Sweater w/badge 24–28</td><td class="amt">KSh 800</td></tr>
+        <tr><td>Sweater w/badge 30–32</td><td class="amt">KSh 900</td></tr>
+        <tr><td>Sweater w/badge 34+</td><td class="amt">KSh 1,000</td></tr>
+        <tr><td>Shirt (White Short Sleeve) 18–26</td><td class="amt">KSh 400</td></tr>
+        <tr><td>Shirt 34+</td><td class="amt">KSh 500</td></tr>
+        <tr><td>Tracksuit (Red/White) 24–28</td><td class="amt">KSh 1,200</td></tr>
+        <tr><td>Tracksuit 30–34</td><td class="amt">KSh 1,300</td></tr>
+        <tr><td>Tracksuit 36–40</td><td class="amt">KSh 1,400</td></tr>
+        <tr><td>T-Shirt Yellow (6–8 yrs)</td><td class="amt">KSh 450</td></tr>
+        <tr><td>T-Shirt Yellow (10–12 yrs)</td><td class="amt">KSh 500</td></tr>
+        <tr><td>Fleece Jacket 22–26</td><td class="amt">KSh 1,800</td></tr>
+        <tr><td>Fleece Jacket 28–32</td><td class="amt">KSh 2,000</td></tr>
+        <tr><td>Tie (Small / Big)</td><td class="amt">KSh 100 / 150</td></tr>
+        <tr><td>Marvin (all sizes)</td><td class="amt">KSh 300</td></tr>
+        <tr><td>Socks (all sizes)</td><td class="amt">KSh 250</td></tr>
+      </table>
+    </div>
+    <div class="uniform-card">
+      <h3>Girls Uniform</h3>
+      <p class="sub">Playgroup – Grade 6</p>
+      <table>
+        <tr><td>Dress (Navy Blue) 18–24</td><td class="amt">KSh 550</td></tr>
+        <tr><td>Dress 26–28</td><td class="amt">KSh 600</td></tr>
+        <tr><td>Dress 30+</td><td class="amt">KSh 650</td></tr>
+        <tr><td>Sweater w/badge 24–28</td><td class="amt">KSh 800</td></tr>
+        <tr><td>Sweater w/badge 30–32</td><td class="amt">KSh 900</td></tr>
+        <tr><td>Sweater w/badge 34+</td><td class="amt">KSh 1,000</td></tr>
+        <tr><td>Blouse (White Short Sleeve) 18–26</td><td class="amt">KSh 400</td></tr>
+        <tr><td>Blouse 34+</td><td class="amt">KSh 500</td></tr>
+        <tr><td>Tracksuit (Red/White) 24–28</td><td class="amt">KSh 1,200</td></tr>
+        <tr><td>Tracksuit 30–34</td><td class="amt">KSh 1,300</td></tr>
+        <tr><td>Tracksuit 36–40</td><td class="amt">KSh 1,400</td></tr>
+        <tr><td>T-Shirt Yellow (6–8 yrs)</td><td class="amt">KSh 450</td></tr>
+        <tr><td>T-Shirt Yellow (10–12 yrs)</td><td class="amt">KSh 500</td></tr>
+        <tr><td>Fleece Jacket 22–26</td><td class="amt">KSh 1,800</td></tr>
+        <tr><td>Fleece Jacket 28–32</td><td class="amt">KSh 2,000</td></tr>
+        <tr><td>Tie (Small / Big)</td><td class="amt">KSh 100 / 150</td></tr>
+        <tr><td>Marvin (all sizes)</td><td class="amt">KSh 300</td></tr>
+        <tr><td>Socks (all sizes)</td><td class="amt">KSh 250</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="uniform-grid">
+    <div class="uniform-card">
+      <h3>Boys — JSS Uniform</h3>
+      <p class="sub">Grade 7–9</p>
+      <table>
+        <tr><td>Blazer</td><td class="amt">KSh 1,800</td></tr>
+        <tr><td>Trouser</td><td class="amt">KSh 800</td></tr>
+        <tr><td>Sweater</td><td class="amt">KSh 1,200</td></tr>
+        <tr><td>Shirt Short Sleeve</td><td class="amt">KSh 500</td></tr>
+        <tr><td>Shirt Long Sleeve</td><td class="amt">KSh 600</td></tr>
+        <tr><td>Tracksuit</td><td class="amt">KSh 1,300</td></tr>
+        <tr><td>T-Shirt</td><td class="amt">KSh 500</td></tr>
+        <tr><td>Tie</td><td class="amt">KSh 200</td></tr>
+        <tr><td>Socks</td><td class="amt">KSh 250</td></tr>
+        <tr><td>Sleeveless Sweater</td><td class="amt">KSh 1,000</td></tr>
+        <tr><td>Fleece Jacket</td><td class="amt">KSh 2,000</td></tr>
+        <tr><td>Marvin</td><td class="amt">KSh 300</td></tr>
+        <tr><td>Scarf</td><td class="amt">KSh 150</td></tr>
+        <tr class="total-row"><td>Total (Boys)</td><td class="amt">KSh 10,600</td></tr>
+      </table>
+    </div>
+    <div class="uniform-card">
+      <h3>Girls — JSS Uniform</h3>
+      <p class="sub">Grade 7–9</p>
+      <table>
+        <tr><td>Blazer</td><td class="amt">KSh 1,800</td></tr>
+        <tr><td>Skirt</td><td class="amt">KSh 800</td></tr>
+        <tr><td>Sweater</td><td class="amt">KSh 1,200</td></tr>
+        <tr><td>Blouse Short Sleeve</td><td class="amt">KSh 500</td></tr>
+        <tr><td>Blouse Long Sleeve</td><td class="amt">KSh 600</td></tr>
+        <tr><td>Tracksuit</td><td class="amt">KSh 1,300</td></tr>
+        <tr><td>T-Shirt</td><td class="amt">KSh 500</td></tr>
+        <tr><td>Tie</td><td class="amt">KSh 200</td></tr>
+        <tr><td>Socks</td><td class="amt">KSh 250</td></tr>
+        <tr><td>Sleeveless Sweater</td><td class="amt">KSh 1,000</td></tr>
+        <tr><td>Fleece Jacket</td><td class="amt">KSh 2,000</td></tr>
+        <tr><td>Marvin</td><td class="amt">KSh 300</td></tr>
+        <tr><td>Scarf</td><td class="amt">KSh 150</td></tr>
+        <tr class="total-row"><td>Total (Girls)</td><td class="amt">KSh 10,600</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+<section class="alt-bg">
+  <div class="section-head">
+    <span class="tag">Parent Testimonials</span>
+    <h2>Voices from Our <em>Community</em></h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card"><div class="stars">★★★★★</div><p class="quote">"My daughter has blossomed since joining Emmanuel Junior. The teachers are dedicated and she is excited to learn every day."</p><div class="who"><strong>Anne W.</strong><span>Parent · Kayole</span></div></div>
+    <div class="testimonial-card"><div class="stars">★★★★★</div><p class="quote">"The CBC implementation here is excellent. My son joined Grade 7 and the transition was smooth."</p><div class="who"><strong>James K.</strong><span>Parent · Komarocks</span></div></div>
+    <div class="testimonial-card"><div class="stars">★★★★★</div><p class="quote">"Three children here from Playgroup to Grade 6. The skating and scouts clubs are a big favourite."</p><div class="who"><strong>Mary N.</strong><span>Parent · Umoja</span></div></div>
+  </div>
+</section>
+<section id="admission">
+  <div class="section-head">
+    <span class="tag">Admission 2025/2026</span>
+    <h2>Join Our School <em>Family</em></h2>
+    <p>Enrolment open for all levels — Playgroup to Grade 9. Free interview. Spaces limited.</p>
+  </div>
+  <div class="admission-steps">
+    <div class="admission-step"><div class="step-num">1</div><h4>Free Interview</h4></div>
+    <div class="admission-step"><div class="step-num">2</div><h4>Submit Documents</h4></div>
+    <div class="admission-step"><div class="step-num">3</div><h4>Pay Admission (KSh 500)</h4></div>
+    <div class="admission-step"><div class="step-num">4</div><h4>Orientation &amp; Start</h4></div>
+  </div>
+  <div class="admission-center">
+    <a href="#contact" class="btn btn-primary">Apply Now — It's Free →</a>
+  </div>
+</section>
+<section class="alt-bg" id="gallery">
+  <div class="section-head">
+    <span class="tag">School Life</span>
+    <h2>Photos &amp; <em>Videos</em></h2>
+    <p>Moments from our classrooms, events, activities and clubs.</p>
+  </div>
+  <div class="gallery-filters">
+    <button class="active">All</button><button>Photos</button><button>Videos</button><button>Events</button><button>Sports</button>
+    <button>⛸️ Skating</button><button>🏕️ Scouts</button><button>🥋 Taekwondo</button><button>💻 Coding</button>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item">Classroom Learning</div>
+    <div class="gallery-item">School Grounds</div>
+    <div class="gallery-item">Sports Day</div>
+    <div class="gallery-item">Assembly</div>
+    <div class="gallery-item">Clubs &amp; Activities</div>
+    <div class="gallery-item">Graduation</div>
+  </div>
+  <p class="gallery-note">📸 Placeholder tiles shown — the school hasn't uploaded real photos/videos yet. Swap these for actual images once available.</p>
+</section>
+<section id="contact">
+  <div class="section-head">
+    <span class="tag">Get In Touch</span>
+    <h2>We'd Love to Hear <em>from You</em></h2>
+    <p>Questions about admissions, fees or activities? We're always happy to help.</p>
+  </div>
+  <div class="contact-grid">
+    <div>
+      <div class="contact-info-item"><div class="ico">📍</div><div><h4>Address</h4><p>P.O. Box 75904-0200, Nairobi, Kenya — Kayole Junction</p></div></div>
+      <div class="contact-info-item"><div class="ico">📞</div><div><h4>Phone / WhatsApp</h4><p><a href="tel:+254726517906">+254 726 517 906</a></p><a href="https://wa.me/254726517906" class="whatsapp-btn">Chat on WhatsApp ↗</a></div></div>
+      <div class="contact-info-item"><div class="ico">✉</div><div><h4>Email</h4><p><a href="mailto:emmanuelschool447@gmail.com">emmanuelschool447@gmail.com</a></p></div></div>
+      <div class="contact-info-item"><div class="ico">🕐</div><div><h4>Hours</h4><p>Mon–Fri: 7:00 AM – 4:00 PM<br>Office: 7:30 AM – 5:00 PM</p></div></div>
+      <div class="map-embed">Map embed placeholder for Kayole Junction, Nairobi — add the school's Google Maps embed link here.</div>
+    </div>
+    <div class="uniform-card">
+      <h3 style="margin-bottom:16px;">Enquiry / Admission Form</h3>
+      <form id="contactForm" novalidate>
+        <div><label for="cName">Parent / Guardian Name *</label><input type="text" id="cName" name="cName" placeholder="Full name" required></div>
+        <div><label for="cPhone">Phone (WhatsApp) *</label><input type="tel" id="cPhone" name="cPhone" placeholder="+254 7xx xxx xxx" required></div>
+        <div><label for="cEmail">Email Address</label><input type="email" id="cEmail" name="cEmail" placeholder="your@email.com"></div>
+        <div><label for="cLevel">Level of Interest *</label>
+          <select id="cLevel" name="cLevel" required>
+            <option value="">Select level</option>
+            <option>Playgroup (Ages 2–4)</option>
+            <option>Pre-Primary 1</option>
+            <option>Pre-Primary 2</option>
+            <option>Grade 1 &amp; 2</option>
+            <option>Grade 3</option>
+            <option>Grade 4 &amp; 5</option>
+            <option>Grade 6</option>
+            <option>Grade 7 &amp; 8 (JSS)</option>
+            <option>Grade 9 (JSS)</option>
+          </select>
+        </div>
+        <div><label for="cMsg">Message / Questions</label><textarea id="cMsg" name="cMsg" rows="3" placeholder="Tell us about your child or ask any questions..."></textarea></div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Send Enquiry</button>
+          <button type="button" class="btn btn-wa" id="waSendBtn">Send via WhatsApp</button>
+        </div>
+        <div class="form-msg" id="contactMsgConfirm">Thank you! Your enquiry has been noted. This form is currently front-end only — connect it to a backend or a service like Formspree to actually receive submissions.</div>
+      </form>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h4>Emmanuel Junior Centre School</h4>
+      <p style="font-size:0.85rem;">Quality CBC education from Playgroup to Grade 9, grounded in faith, excellence, and community — serving Kayole Junction, Nairobi.</p>
+      <p style="font-size:0.82rem;margin-top:10px;">P.O. Box 75904-0200, Nairobi · +254 726 517 906</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#activities">Activities</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Information</h4>
+      <ul>
+        <li><a href="#fees">Fee Structure</a></li>
+        <li><a href="#uniform">Uniform Prices</a></li>
+        <li><a href="#admission">How to Enroll</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Emmanuel Junior Centre School. All rights reserved. Nairobi, Kenya.</div>
+</footer>
+<script>
+  var navToggle = document.getElementById('navToggle');
+  var navMenu = document.getElementById('navMenu');
+  navToggle.addEventListener('click', function () {
+    var isOpen = navMenu.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  navMenu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      navMenu.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+  var contactForm = document.getElementById('contactForm');
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!contactForm.checkValidity()) { contactForm.reportValidity(); return; }
+    document.getElementById('contactMsgConfirm').classList.add('show');
+    contactForm.reset();
+  });
+  document.getElementById('waSendBtn').addEventListener('click', function () {
+    var name = document.getElementById('cName').value || 'Parent';
+    var level = document.getElementById('cLevel').value || 'a level';
+    var msg = document.getElementById('cMsg').value || '';
+    var text = encodeURIComponent('Hello, my name is ' + name + '. I am interested in enrolling for ' + level + '. ' + msg);
+    window.open('https://wa.me/254726517906?text=' + text, '_blank');
+  });
+  document.querySelectorAll('.gallery-filters button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.gallery-filters button').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+    });
+  });
+</script>
 </body>
 </html>
