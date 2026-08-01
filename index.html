@@ -40,6 +40,8 @@
     .reveal { opacity: 1; transform: none; transition: none; }
     .hero-anim-1, .hero-anim-2, .hero-anim-3, .hero-anim-4, .hero-anim-5, .hero-anim-6, .hero-anim-7 { animation: none !important; opacity: 1 !important; transform: none !important; }
     .pillar, .program-card, .activity-card, .value-card, .mvv-card, .testimonial-card, .uniform-card, .transport-card, .gallery-item, .btn, .fee-table-wrap, .fee-note-box, nav a::after, .brand-badge { transition: none !important; }
+    .decor-cap-1, .decor-cap-2, .decor-book, .decor-pencil, .decor-star, .decor-sparkle { animation: none !important; opacity: .75 !important; transform: none !important; }
+    .confetti-burst .confetti-piece, .confetti-burst.is-visible .confetti-piece { animation: none !important; opacity: 0 !important; }
   }
 
   header { background: rgba(10,46,26,0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 16px rgba(10,46,26,0.22); }
@@ -99,6 +101,40 @@
   .hero-anim-5 { animation: heroFadeUp .7s ease .32s both; }
   .hero-anim-6 { animation: heroFadeUp .7s ease .4s both; }
   .hero-anim-7 { animation: heroFadeUp .8s ease .3s both; }
+
+  /* Decorative hero flourishes */
+  .hero-decor { position: absolute; inset: 0; pointer-events: none; }
+  .hero-decor span { position: absolute; display: inline-block; line-height: 1; }
+  .decor-cap-1 { top: 6%; right: 6%; font-size: 2.4rem; animation: capToss 1s cubic-bezier(.34,1.56,.64,1) .5s both, capFloat 3.6s ease-in-out 1.5s infinite; }
+  .decor-cap-2 { top: 9%; left: 4%; font-size: 1.7rem; opacity: .9; animation: capToss 1s cubic-bezier(.34,1.56,.64,1) .9s both, capFloat 4.2s ease-in-out 1.9s infinite reverse; }
+  .decor-book { bottom: 9%; left: 5%; font-size: 1.8rem; opacity: .7; animation: decorFadeIn .8s ease .6s both, gentleDrift 5s ease-in-out 1.4s infinite; }
+  .decor-pencil { bottom: 13%; right: 7%; font-size: 1.6rem; opacity: .7; animation: decorFadeIn .8s ease .8s both, gentleDrift 4.4s ease-in-out 1.6s infinite reverse; }
+  .decor-star { top: 4%; left: 46%; font-size: 1rem; opacity: .8; animation: decorFadeIn .6s ease 1s both, twinkle 2.6s ease-in-out 1.6s infinite; }
+  .decor-sparkle { bottom: 5%; right: 3%; font-size: 1.1rem; opacity: .75; animation: decorFadeIn .6s ease 1.1s both, twinkle 3.2s ease-in-out 1.7s infinite; }
+  @keyframes capToss {
+    0% { opacity: 0; transform: translateY(50px) rotate(-30deg) scale(.7); }
+    55% { opacity: 1; transform: translateY(-12px) rotate(14deg) scale(1.06); }
+    78% { transform: translateY(4px) rotate(-5deg) scale(.98); }
+    100% { opacity: 1; transform: translateY(0) rotate(0deg) scale(1); }
+  }
+  @keyframes capFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(6deg); }
+  }
+  @keyframes decorFadeIn { from { opacity: 0; } }
+  @keyframes gentleDrift {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-9px) rotate(-8deg); }
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: .4; transform: scale(1); }
+    50% { opacity: .9; transform: scale(1.2); }
+  }
+  @media (max-width: 700px) {
+    .hero-decor .decor-book, .hero-decor .decor-pencil, .hero-decor .decor-star, .hero-decor .decor-sparkle { display: none; }
+    .hero-decor .decor-cap-1 { font-size: 1.6rem; top: 3%; right: 3%; }
+    .hero-decor .decor-cap-2 { font-size: 1.3rem; top: 3%; left: 3%; }
+  }
 
   section { padding: 72px 20px; }
   @media (min-width: 768px) { section { padding: 96px 24px; } }
@@ -175,6 +211,27 @@
   .testimonial-card p.quote { color: var(--text); font-size: 0.92rem; margin-bottom: 16px; font-style: italic; }
   .testimonial-card .who strong { color: var(--primary); display: block; font-size: 0.9rem; }
   .testimonial-card .who span { color: var(--muted); font-size: 0.8rem; }
+  #admission { position: relative; }
+  .confetti-burst { position: absolute; top: 0; left: 0; right: 0; height: 0; pointer-events: none; z-index: 2; opacity: 1 !important; transform: none !important; transition: none !important; }
+  .confetti-piece { position: absolute; top: 0; width: 8px; height: 14px; border-radius: 2px; opacity: 0; background: var(--gold); }
+  .confetti-piece:nth-child(4n+1) { background: var(--primary-2); }
+  .confetti-piece:nth-child(4n+2) { background: var(--gold); }
+  .confetti-piece:nth-child(4n+3) { background: var(--gold-light); }
+  .confetti-piece:nth-child(4n) { background: var(--white); }
+  .confetti-piece.confetti-cap { width: auto; height: auto; background: none; font-size: 1.15rem; }
+  .confetti-burst.is-visible .confetti-piece { animation: confettiFall 1.7s ease-in forwards; }
+  .confetti-burst.is-visible .confetti-piece.confetti-cap { animation-name: capConfettiFall; animation-duration: 1.9s; }
+  @keyframes confettiFall {
+    0% { opacity: 0; transform: translateY(-8px) rotate(0deg); }
+    12% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(170px) rotate(360deg); }
+  }
+  @keyframes capConfettiFall {
+    0% { opacity: 0; transform: translateY(-10px) rotate(-15deg) scale(.85); }
+    15% { opacity: 1; }
+    55% { transform: translateY(65px) rotate(190deg) scale(1); }
+    100% { opacity: 0; transform: translateY(175px) rotate(360deg) scale(.9); }
+  }
   .admission-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 22px; max-width: 1000px; margin: 0 auto 32px; }
   .admission-step { text-align: center; padding: 20px; border-radius: 12px; transition: transform .3s ease; }
   .admission-step:hover { transform: translateY(-4px); }
@@ -251,6 +308,14 @@
   </div>
 </header>
 <section class="hero" id="home">
+  <div class="hero-decor" aria-hidden="true">
+    <span class="decor-cap-1">🎓</span>
+    <span class="decor-cap-2">🎓</span>
+    <span class="decor-book">📚</span>
+    <span class="decor-pencil">✏️</span>
+    <span class="decor-star">⭐</span>
+    <span class="decor-sparkle">✨</span>
+  </div>
   <div class="hero-grid">
     <div>
       <span class="eyebrow hero-anim-1">Nairobi, Kenya · CBC 2-6-3-3-3</span>
@@ -502,6 +567,20 @@
   </div>
 </section>
 <section id="admission">
+  <div class="confetti-burst reveal" aria-hidden="true">
+    <span class="confetti-piece" style="left:6%; animation-delay:.05s;"></span>
+    <span class="confetti-piece" style="left:16%; animation-delay:.15s;"></span>
+    <span class="confetti-piece confetti-cap" style="left:26%; animation-delay:.1s;">🎓</span>
+    <span class="confetti-piece" style="left:36%; animation-delay:.25s;"></span>
+    <span class="confetti-piece" style="left:46%; animation-delay:0s;"></span>
+    <span class="confetti-piece confetti-cap" style="left:56%; animation-delay:.3s;">🎓</span>
+    <span class="confetti-piece" style="left:66%; animation-delay:.2s;"></span>
+    <span class="confetti-piece" style="left:76%; animation-delay:.1s;"></span>
+    <span class="confetti-piece" style="left:86%; animation-delay:.35s;"></span>
+    <span class="confetti-piece" style="left:12%; animation-delay:.4s;"></span>
+    <span class="confetti-piece" style="left:62%; animation-delay:.45s;"></span>
+    <span class="confetti-piece" style="left:94%; animation-delay:.05s;"></span>
+  </div>
   <div class="section-head reveal">
     <span class="tag">Admission 2025/2026</span>
     <h2>Join Our School <em>Family</em></h2>
