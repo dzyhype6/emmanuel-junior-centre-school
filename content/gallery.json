@@ -1,0 +1,10 @@
+{
+  "items": [
+    { "title": "Classroom Learning", "category": "Photos", "image": "", "videoUrl": "" },
+    { "title": "School Grounds", "category": "Photos", "image": "", "videoUrl": "" },
+    { "title": "Sports Day", "category": "Sports", "image": "", "videoUrl": "" },
+    { "title": "Assembly", "category": "Events", "image": "", "videoUrl": "" },
+    { "title": "Clubs & Activities", "category": "Events", "image": "", "videoUrl": "" },
+    { "title": "Graduation", "category": "Events", "image": "", "videoUrl": "" }
+  ]
+}

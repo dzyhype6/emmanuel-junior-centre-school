@@ -1,0 +1,13 @@
+{
+  "name": "emmanuel-school-decap-oauth",
+  "private": true,
+  "version": "1.0.0",
+  "description": "GitHub OAuth proxy Worker for the Decap CMS admin panel (see ../SETUP.md).",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev"
+  },
+  "devDependencies": {
+    "wrangler": "^3.90.0"
+  }
+}

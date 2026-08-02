@@ -1,0 +1,157 @@
+backend:
+  name: github
+  repo: dzyhype6/emmanuel-junior-centre-school
+  branch: main
+  base_url: https://REPLACE_WITH_OAUTH_PROXY_URL
+  auth_endpoint: auth
+
+media_folder: "uploads"
+public_folder: "uploads"
+
+site_url: https://dzyhype6.github.io/emmanuel-junior-centre-school/
+display_url: https://dzyhype6.github.io/emmanuel-junior-centre-school/
+
+collections:
+  - name: "settings"
+    label: "Contact & School Info"
+    files:
+      - file: "content/settings.json"
+        label: "Contact Settings"
+        name: "settings"
+        format: "json"
+        fields:
+          - { label: "Phone Number", name: "phone", widget: "string", hint: "Used for the click-to-call link. Format: +254 726 517 906" }
+          - { label: "WhatsApp Number", name: "whatsapp", widget: "string", hint: "Digits only, no + or spaces, with country code. Format: 254726517906" }
+          - { label: "Email Address", name: "email", widget: "string" }
+          - { label: "Postal Address", name: "address", widget: "string" }
+          - { label: "Weekday Hours", name: "hoursWeekday", widget: "string" }
+          - { label: "Office Hours", name: "hoursOffice", widget: "string" }
+
+  - name: "fees"
+    label: "Fees & Uniform"
+    files:
+      - file: "content/fees.json"
+        label: "Fee Structure"
+        name: "fees"
+        format: "json"
+        fields:
+          - label: "Playgroup / PP1 Fees"
+            name: "playgroup"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "string" }
+              - { label: "School Fees", name: "schoolFees", widget: "string" }
+              - { label: "Exams", name: "exams", widget: "string" }
+              - { label: "Total per Term", name: "total", widget: "string" }
+              - label: "Feeding (optional extras)"
+                name: "feeding"
+                widget: "list"
+                fields:
+                  - { label: "Item", name: "label", widget: "string" }
+                  - { label: "Amount", name: "amount", widget: "string" }
+              - label: "One-Time / Additional Charges"
+                name: "oneTime"
+                widget: "list"
+                fields:
+                  - { label: "Item", name: "label", widget: "string" }
+                  - { label: "Amount", name: "amount", widget: "string" }
+          - label: "Other Stages — Fee Ranges"
+            name: "otherStages"
+            widget: "list"
+            fields:
+              - { label: "Stage", name: "label", widget: "string" }
+              - { label: "Fee / Term", name: "amount", widget: "string" }
+          - label: "Program Card Fees (the 'Learning at Every Stage' cards)"
+            name: "programs"
+            widget: "list"
+            fields:
+              - { label: "Stage (for your reference only, not shown as edited here)", name: "stageTag", widget: "string" }
+              - { label: "Fee Text", name: "fee", widget: "string" }
+          - label: "Notes & Policies"
+            name: "notes"
+            widget: "list"
+          - label: "Transport Charges"
+            name: "transport"
+            widget: "list"
+            fields:
+              - { label: "Amount / Term", name: "amount", widget: "string" }
+              - { label: "Zones Covered", name: "zones", widget: "string" }
+          - { label: "Accepted Payment Methods", name: "paymentMethods", widget: "string" }
+          - { label: "Activity Price (applies to all clubs: Skating, Scouts, Taekwondo, etc.)", name: "activityPrice", widget: "string" }
+          - label: "Uniforms"
+            name: "uniforms"
+            widget: "object"
+            fields:
+              - label: "Boys Uniform (Playgroup – Grade 6)"
+                name: "boysLower"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Subtitle", name: "subtitle", widget: "string" }
+                  - { label: "Total (leave blank if no total row)", name: "total", widget: "string", required: false }
+                  - label: "Items"
+                    name: "rows"
+                    widget: "list"
+                    fields:
+                      - { label: "Item", name: "label", widget: "string" }
+                      - { label: "Amount", name: "amount", widget: "string" }
+              - label: "Girls Uniform (Playgroup – Grade 6)"
+                name: "girlsLower"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Subtitle", name: "subtitle", widget: "string" }
+                  - { label: "Total (leave blank if no total row)", name: "total", widget: "string", required: false }
+                  - label: "Items"
+                    name: "rows"
+                    widget: "list"
+                    fields:
+                      - { label: "Item", name: "label", widget: "string" }
+                      - { label: "Amount", name: "amount", widget: "string" }
+              - label: "Boys JSS Uniform (Grade 7–9)"
+                name: "boysJss"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Subtitle", name: "subtitle", widget: "string" }
+                  - { label: "Total", name: "total", widget: "string", required: false }
+                  - label: "Items"
+                    name: "rows"
+                    widget: "list"
+                    fields:
+                      - { label: "Item", name: "label", widget: "string" }
+                      - { label: "Amount", name: "amount", widget: "string" }
+              - label: "Girls JSS Uniform (Grade 7–9)"
+                name: "girlsJss"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Subtitle", name: "subtitle", widget: "string" }
+                  - { label: "Total", name: "total", widget: "string", required: false }
+                  - label: "Items"
+                    name: "rows"
+                    widget: "list"
+                    fields:
+                      - { label: "Item", name: "label", widget: "string" }
+                      - { label: "Amount", name: "amount", widget: "string" }
+
+  - name: "gallery"
+    label: "Gallery"
+    files:
+      - file: "content/gallery.json"
+        label: "Gallery Items"
+        name: "gallery"
+        format: "json"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Title / Caption", name: "title", widget: "string" }
+              - label: "Category"
+                name: "category"
+                widget: "select"
+                options: ["Photos", "Videos", "Events", "Sports"]
+              - { label: "Photo (optional)", name: "image", widget: "image", required: false, hint: "Upload a photo, or leave blank and add a video link below instead." }
+              - { label: "Video Link (optional)", name: "videoUrl", widget: "string", required: false, hint: "Paste a YouTube or Vimeo link. Uploading raw video files isn't supported — GitHub blocks files over 100MB, so a link keeps the site fast." }

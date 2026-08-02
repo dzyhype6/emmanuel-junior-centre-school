@@ -1,0 +1,139 @@
+{
+  "playgroup": {
+    "title": "Playgroup / PP1 — Ages 2–4",
+    "subtitle": "Termly breakdown",
+    "schoolFees": "KSh 6,200",
+    "exams": "KSh 300",
+    "total": "KSh 6,500",
+    "feeding": [
+      { "label": "Breakfast", "amount": "KSh 600" },
+      { "label": "Lunch", "amount": "KSh 3,000" }
+    ],
+    "oneTime": [
+      { "label": "Admission Fee (once)", "amount": "KSh 500" },
+      { "label": "Assessment Book (yearly)", "amount": "KSh 500" },
+      { "label": "School Diary (yearly)", "amount": "KSh 300" }
+    ]
+  },
+  "otherStages": [
+    { "label": "Lower Primary (Grade 1–3)", "amount": "KSh 7,500 – 8,000" },
+    { "label": "Upper Primary (Grade 4–6)", "amount": "KSh 9,500 – 11,000" },
+    { "label": "Grade 7 (JSS)", "amount": "KSh 13,500" },
+    { "label": "Grade 8 (JSS)", "amount": "KSh 13,500" },
+    { "label": "Grade 9 (JSS)", "amount": "KSh 14,000" }
+  ],
+  "programs": [
+    { "stageTag": "Playgroup · Ages 2–4", "fee": "KSh 6,500 – 6,800 / term" },
+    { "stageTag": "Grade 1–3", "fee": "KSh 7,500 – 8,000 / term" },
+    { "stageTag": "Grade 4–6", "fee": "KSh 9,500 – 11,000 / term" },
+    { "stageTag": "Grade 7 · JSS", "fee": "KSh 13,500 / term" },
+    { "stageTag": "Grade 8 · JSS", "fee": "KSh 13,500 / term" },
+    { "stageTag": "Grade 9 · JSS", "fee": "KSh 14,000 / term" }
+  ],
+  "notes": [
+    "Birth certificate copy required when joining school",
+    "Fees cleared within first two months of the term",
+    "Pupils carry packed snacks & water — no money allowed in school",
+    "Educational trips charged per cost of venue",
+    "Extra co-curricular activities KSh 1,000/term each (Skating, Scouts, Taekwondo, etc.)"
+  ],
+  "transport": [
+    { "amount": "KSh 4,500", "zones": "Kayole 1, Matopeni, Maana, Obama, Komarocks, Saika, Spring Valley" },
+    { "amount": "KSh 5,000", "zones": "Njiru, Kirima, Mowlem, Nyamavilla, Masimba" },
+    { "amount": "KSh 6,000", "zones": "Umoja, Chokaa" }
+  ],
+  "paymentMethods": "KCB M-Pesa, Equity M-Pesa, Equity Bank, KCB Bank, and Family Bank accounts are accepted.",
+  "activityPrice": "KSh 1,000/term",
+  "uniforms": {
+    "boysLower": {
+      "title": "Boys Uniform",
+      "subtitle": "Playgroup – Grade 6",
+      "total": "",
+      "rows": [
+        { "label": "Trouser (Navy Blue) 18–24", "amount": "KSh 500" },
+        { "label": "Trouser 26–28", "amount": "KSh 600" },
+        { "label": "Trouser 30+", "amount": "KSh 650" },
+        { "label": "Sweater w/badge 24–28", "amount": "KSh 800" },
+        { "label": "Sweater w/badge 30–32", "amount": "KSh 900" },
+        { "label": "Sweater w/badge 34+", "amount": "KSh 1,000" },
+        { "label": "Shirt (White Short Sleeve) 18–26", "amount": "KSh 400" },
+        { "label": "Shirt 34+", "amount": "KSh 500" },
+        { "label": "Tracksuit (Red/White) 24–28", "amount": "KSh 1,200" },
+        { "label": "Tracksuit 30–34", "amount": "KSh 1,300" },
+        { "label": "Tracksuit 36–40", "amount": "KSh 1,400" },
+        { "label": "T-Shirt Yellow (6–8 yrs)", "amount": "KSh 450" },
+        { "label": "T-Shirt Yellow (10–12 yrs)", "amount": "KSh 500" },
+        { "label": "Fleece Jacket 22–26", "amount": "KSh 1,800" },
+        { "label": "Fleece Jacket 28–32", "amount": "KSh 2,000" },
+        { "label": "Tie (Small / Big)", "amount": "KSh 100 / 150" },
+        { "label": "Marvin (all sizes)", "amount": "KSh 300" },
+        { "label": "Socks (all sizes)", "amount": "KSh 250" }
+      ]
+    },
+    "girlsLower": {
+      "title": "Girls Uniform",
+      "subtitle": "Playgroup – Grade 6",
+      "total": "",
+      "rows": [
+        { "label": "Dress (Navy Blue) 18–24", "amount": "KSh 550" },
+        { "label": "Dress 26–28", "amount": "KSh 600" },
+        { "label": "Dress 30+", "amount": "KSh 650" },
+        { "label": "Sweater w/badge 24–28", "amount": "KSh 800" },
+        { "label": "Sweater w/badge 30–32", "amount": "KSh 900" },
+        { "label": "Sweater w/badge 34+", "amount": "KSh 1,000" },
+        { "label": "Blouse (White Short Sleeve) 18–26", "amount": "KSh 400" },
+        { "label": "Blouse 34+", "amount": "KSh 500" },
+        { "label": "Tracksuit (Red/White) 24–28", "amount": "KSh 1,200" },
+        { "label": "Tracksuit 30–34", "amount": "KSh 1,300" },
+        { "label": "Tracksuit 36–40", "amount": "KSh 1,400" },
+        { "label": "T-Shirt Yellow (6–8 yrs)", "amount": "KSh 450" },
+        { "label": "T-Shirt Yellow (10–12 yrs)", "amount": "KSh 500" },
+        { "label": "Fleece Jacket 22–26", "amount": "KSh 1,800" },
+        { "label": "Fleece Jacket 28–32", "amount": "KSh 2,000" },
+        { "label": "Tie (Small / Big)", "amount": "KSh 100 / 150" },
+        { "label": "Marvin (all sizes)", "amount": "KSh 300" },
+        { "label": "Socks (all sizes)", "amount": "KSh 250" }
+      ]
+    },
+    "boysJss": {
+      "title": "Boys — JSS Uniform",
+      "subtitle": "Grade 7–9",
+      "total": "KSh 10,600",
+      "rows": [
+        { "label": "Blazer", "amount": "KSh 1,800" },
+        { "label": "Trouser", "amount": "KSh 800" },
+        { "label": "Sweater", "amount": "KSh 1,200" },
+        { "label": "Shirt Short Sleeve", "amount": "KSh 500" },
+        { "label": "Shirt Long Sleeve", "amount": "KSh 600" },
+        { "label": "Tracksuit", "amount": "KSh 1,300" },
+        { "label": "T-Shirt", "amount": "KSh 500" },
+        { "label": "Tie", "amount": "KSh 200" },
+        { "label": "Socks", "amount": "KSh 250" },
+        { "label": "Sleeveless Sweater", "amount": "KSh 1,000" },
+        { "label": "Fleece Jacket", "amount": "KSh 2,000" },
+        { "label": "Marvin", "amount": "KSh 300" },
+        { "label": "Scarf", "amount": "KSh 150" }
+      ]
+    },
+    "girlsJss": {
+      "title": "Girls — JSS Uniform",
+      "subtitle": "Grade 7–9",
+      "total": "KSh 10,600",
+      "rows": [
+        { "label": "Blazer", "amount": "KSh 1,800" },
+        { "label": "Skirt", "amount": "KSh 800" },
+        { "label": "Sweater", "amount": "KSh 1,200" },
+        { "label": "Blouse Short Sleeve", "amount": "KSh 500" },
+        { "label": "Blouse Long Sleeve", "amount": "KSh 600" },
+        { "label": "Tracksuit", "amount": "KSh 1,300" },
+        { "label": "T-Shirt", "amount": "KSh 500" },
+        { "label": "Tie", "amount": "KSh 200" },
+        { "label": "Socks", "amount": "KSh 250" },
+        { "label": "Sleeveless Sweater", "amount": "KSh 1,000" },
+        { "label": "Fleece Jacket", "amount": "KSh 2,000" },
+        { "label": "Marvin", "amount": "KSh 300" },
+        { "label": "Scarf", "amount": "KSh 150" }
+      ]
+    }
+  }
+}

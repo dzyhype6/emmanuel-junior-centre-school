@@ -1,0 +1,13 @@
+name = "emmanuel-school-decap-oauth"
+main = "worker.js"
+compatibility_date = "2024-11-01"
+
+# Non-secret configuration.
+[vars]
+GITHUB_OAUTH_SCOPE = "repo,user"
+
+# Secrets are NOT set here — never commit them. After creating the GitHub
+# OAuth App (see ../SETUP.md), set them with:
+#
+#   wrangler secret put GITHUB_CLIENT_ID
+#   wrangler secret put GITHUB_CLIENT_SECRET

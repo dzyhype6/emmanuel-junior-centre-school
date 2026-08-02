@@ -243,8 +243,11 @@
   .gallery-filters button:hover { transform: translateY(-2px); }
   .gallery-filters button.active { background: var(--primary); color: var(--white); border-color: var(--primary); }
   .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; max-width: 1000px; margin: 0 auto; }
-  .gallery-item { aspect-ratio: 4/3; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 600; font-size: 0.82rem; text-align: center; padding: 10px; transition: transform .3s ease, box-shadow .3s ease; }
+  .gallery-item { position: relative; aspect-ratio: 4/3; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 600; font-size: 0.82rem; text-align: center; padding: 10px; transition: transform .3s ease, box-shadow .3s ease; overflow: hidden; }
   .gallery-item:hover { transform: translateY(-6px) scale(1.02); box-shadow: var(--shadow-md); }
+  .gallery-item.has-image { background-size: cover; background-position: center; }
+  .gallery-item.has-image span { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: center; padding: 12px 10px; background: linear-gradient(180deg, transparent 55%, rgba(10,46,26,0.78) 100%); }
+  .gallery-item.has-video span { display: inline-flex; align-items: center; gap: 6px; }
   .gallery-item:nth-child(1) { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
   .gallery-item:nth-child(2) { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--primary-dark); }
   .gallery-item:nth-child(3) { background: linear-gradient(135deg, var(--primary-2), var(--primary)); }
@@ -285,7 +288,7 @@
   }
 </style>
 </head>
-<body>
+<body data-wa-number="254726517906">
 <header>
   <div class="navbar">
     <a href="#home" class="brand">
@@ -374,12 +377,12 @@
     <p>2 years Pre-Primary · 6 years Primary · 3 years Junior Secondary — full Kenya CBC Curriculum from Playgroup to Grade 9.</p>
   </div>
   <div class="programs-grid reveal">
-    <div class="program-card"><span class="stage-tag">Playgroup · Ages 2–4</span><h3>Playgroup / PP1 &amp; PP2</h3><p>Play-based early childhood education with digital literacy, clubs and remedial support included.</p><div class="fee">KSh 6,500 – 6,800 / term</div></div>
-    <div class="program-card"><span class="stage-tag">Grade 1–3</span><h3>Lower Primary</h3><p>Core CBC subjects — English, Kiswahili, Maths, Science &amp; Social Studies with small class sizes.</p><div class="fee">KSh 7,500 – 8,000 / term</div></div>
-    <div class="program-card"><span class="stage-tag">Grade 4–6</span><h3>Upper Primary</h3><p>Advanced CBC learning with internal projects, book fund support and extracurricular activities.</p><div class="fee">KSh 9,500 – 11,000 / term</div></div>
-    <div class="program-card"><span class="stage-tag">Grade 7 · JSS</span><h3>Grade 7 — JSS</h3><p>CBC Junior Secondary School — KNEC registered, project-based learning and digital integration.</p><div class="fee">KSh 13,500 / term</div></div>
-    <div class="program-card"><span class="stage-tag">Grade 8 · JSS</span><h3>Grade 8 — JSS</h3><p>Deepened subject specialisation, KNEC projects, practical examinations and mentorship programmes.</p><div class="fee">KSh 13,500 / term</div></div>
-    <div class="program-card"><span class="stage-tag">Grade 9 · JSS</span><h3>Grade 9 — JSS</h3><p>Final year of Junior Secondary — KNEC practical, KPSEA transition preparation and career guidance.</p><div class="fee">KSh 14,000 / term</div></div>
+    <div class="program-card"><span class="stage-tag">Playgroup · Ages 2–4</span><h3>Playgroup / PP1 &amp; PP2</h3><p>Play-based early childhood education with digital literacy, clubs and remedial support included.</p><div class="fee" id="feeProgram0">KSh 6,500 – 6,800 / term</div></div>
+    <div class="program-card"><span class="stage-tag">Grade 1–3</span><h3>Lower Primary</h3><p>Core CBC subjects — English, Kiswahili, Maths, Science &amp; Social Studies with small class sizes.</p><div class="fee" id="feeProgram1">KSh 7,500 – 8,000 / term</div></div>
+    <div class="program-card"><span class="stage-tag">Grade 4–6</span><h3>Upper Primary</h3><p>Advanced CBC learning with internal projects, book fund support and extracurricular activities.</p><div class="fee" id="feeProgram2">KSh 9,500 – 11,000 / term</div></div>
+    <div class="program-card"><span class="stage-tag">Grade 7 · JSS</span><h3>Grade 7 — JSS</h3><p>CBC Junior Secondary School — KNEC registered, project-based learning and digital integration.</p><div class="fee" id="feeProgram3">KSh 13,500 / term</div></div>
+    <div class="program-card"><span class="stage-tag">Grade 8 · JSS</span><h3>Grade 8 — JSS</h3><p>Deepened subject specialisation, KNEC projects, practical examinations and mentorship programmes.</p><div class="fee" id="feeProgram4">KSh 13,500 / term</div></div>
+    <div class="program-card"><span class="stage-tag">Grade 9 · JSS</span><h3>Grade 9 — JSS</h3><p>Final year of Junior Secondary — KNEC practical, KPSEA transition preparation and career guidance.</p><div class="fee" id="feeProgram5">KSh 14,000 / term</div></div>
   </div>
 </section>
 <section id="activities">
@@ -389,14 +392,14 @@
     <p>KSh 1,000 / term per activity. Our students shine far beyond the classroom.</p>
   </div>
   <div class="activities-grid reveal">
-    <div class="activity-card"><div class="emoji">⛸️</div><h4>Skating</h4><p>Inline skating — balance, coordination and confidence for all levels.</p><div class="price">KSh 1,000/term</div></div>
-    <div class="activity-card"><div class="emoji">🏕️</div><h4>Scouts</h4><p>Kenya Scouts — leadership, community service and outdoor adventure skills.</p><div class="price">KSh 1,000/term</div></div>
-    <div class="activity-card"><div class="emoji">🥋</div><h4>Taekwondo</h4><p>Certified Taekwondo training — discipline, self-defence and confidence.</p><div class="price">KSh 1,000/term</div></div>
-    <div class="activity-card"><div class="emoji">💻</div><h4>Coding Club</h4><p>Scratch, Python basics and computational thinking for young innovators.</p><div class="price">KSh 1,000/term</div></div>
-    <div class="activity-card"><div class="emoji">🎵</div><h4>Music</h4><p>Choir, instruments and performance — nurturing artistic talent and expression.</p><div class="price">KSh 1,000/term</div></div>
-    <div class="activity-card"><div class="emoji">🤸</div><h4>Acrobatics</h4><p>Gymnastics and acrobatics building flexibility, strength and team spirit.</p><div class="price">KSh 1,000/term</div></div>
-    <div class="activity-card"><div class="emoji">🌱</div><h4>Environment Club</h4><p>Gardening, recycling and environmental stewardship for a greener future.</p><div class="price">KSh 1,000/term</div></div>
-    <div class="activity-card"><div class="emoji">🤟</div><h4>Sign Language</h4><p>Kenyan Sign Language — inclusivity, communication and empathy.</p><div class="price">KSh 1,000/term</div></div>
+    <div class="activity-card"><div class="emoji">⛸️</div><h4>Skating</h4><p>Inline skating — balance, coordination and confidence for all levels.</p><div class="price js-activity-price">KSh 1,000/term</div></div>
+    <div class="activity-card"><div class="emoji">🏕️</div><h4>Scouts</h4><p>Kenya Scouts — leadership, community service and outdoor adventure skills.</p><div class="price js-activity-price">KSh 1,000/term</div></div>
+    <div class="activity-card"><div class="emoji">🥋</div><h4>Taekwondo</h4><p>Certified Taekwondo training — discipline, self-defence and confidence.</p><div class="price js-activity-price">KSh 1,000/term</div></div>
+    <div class="activity-card"><div class="emoji">💻</div><h4>Coding Club</h4><p>Scratch, Python basics and computational thinking for young innovators.</p><div class="price js-activity-price">KSh 1,000/term</div></div>
+    <div class="activity-card"><div class="emoji">🎵</div><h4>Music</h4><p>Choir, instruments and performance — nurturing artistic talent and expression.</p><div class="price js-activity-price">KSh 1,000/term</div></div>
+    <div class="activity-card"><div class="emoji">🤸</div><h4>Acrobatics</h4><p>Gymnastics and acrobatics building flexibility, strength and team spirit.</p><div class="price js-activity-price">KSh 1,000/term</div></div>
+    <div class="activity-card"><div class="emoji">🌱</div><h4>Environment Club</h4><p>Gardening, recycling and environmental stewardship for a greener future.</p><div class="price js-activity-price">KSh 1,000/term</div></div>
+    <div class="activity-card"><div class="emoji">🤟</div><h4>Sign Language</h4><p>Kenyan Sign Language — inclusivity, communication and empathy.</p><div class="price js-activity-price">KSh 1,000/term</div></div>
   </div>
 </section>
 <section class="alt-bg" id="fees">
@@ -406,41 +409,49 @@
     <p>All fees include remedial classes, digital literacy, maintenance and clubs.</p>
   </div>
   <div class="fee-table-wrap reveal">
-    <h3>Playgroup / PP1 — Ages 2–4</h3>
-    <p class="sub">Termly breakdown</p>
+    <h3 id="feePlaygroundTitle">Playgroup / PP1 — Ages 2–4</h3>
+    <p class="sub" id="feePlaygroundSubtitle">Termly breakdown</p>
     <table>
-      <tr><th>Item</th><th style="text-align:right;">Amount</th></tr>
-      <tr><td>School Fees</td><td class="amt">KSh 6,200</td></tr>
-      <tr><td>Exams</td><td class="amt">KSh 300</td></tr>
-      <tr class="total-row"><td>Total / Term</td><td class="amt">KSh 6,500</td></tr>
+      <thead><tr><th>Item</th><th style="text-align:right;">Amount</th></tr></thead>
+      <tbody id="feePlaygroundMainRows">
+        <tr><td>School Fees</td><td class="amt">KSh 6,200</td></tr>
+        <tr><td>Exams</td><td class="amt">KSh 300</td></tr>
+        <tr class="total-row"><td>Total / Term</td><td class="amt">KSh 6,500</td></tr>
+      </tbody>
     </table>
     <table style="margin-top:16px;">
-      <tr><th>Optional – Feeding</th><th style="text-align:right;"></th></tr>
-      <tr><td>Breakfast</td><td class="amt">KSh 600</td></tr>
-      <tr><td>Lunch</td><td class="amt">KSh 3,000</td></tr>
+      <thead><tr><th>Optional – Feeding</th><th style="text-align:right;"></th></tr></thead>
+      <tbody id="feePlaygroundFeedingRows">
+        <tr><td>Breakfast</td><td class="amt">KSh 600</td></tr>
+        <tr><td>Lunch</td><td class="amt">KSh 3,000</td></tr>
+      </tbody>
     </table>
     <table style="margin-top:16px;">
-      <tr><th>One-Time / Additional</th><th style="text-align:right;"></th></tr>
-      <tr><td>Admission Fee (once)</td><td class="amt">KSh 500</td></tr>
-      <tr><td>Assessment Book (yearly)</td><td class="amt">KSh 500</td></tr>
-      <tr><td>School Diary (yearly)</td><td class="amt">KSh 300</td></tr>
+      <thead><tr><th>One-Time / Additional</th><th style="text-align:right;"></th></tr></thead>
+      <tbody id="feePlaygroundOnetimeRows">
+        <tr><td>Admission Fee (once)</td><td class="amt">KSh 500</td></tr>
+        <tr><td>Assessment Book (yearly)</td><td class="amt">KSh 500</td></tr>
+        <tr><td>School Diary (yearly)</td><td class="amt">KSh 300</td></tr>
+      </tbody>
     </table>
   </div>
   <div class="fee-table-wrap reveal">
     <h3>Other Stages — Termly Fee Ranges</h3>
     <p class="sub">Contact the school office for the full itemized breakdown per stage</p>
     <table>
-      <tr><th>Stage</th><th style="text-align:right;">Fee / Term</th></tr>
-      <tr><td>Lower Primary (Grade 1–3)</td><td class="amt">KSh 7,500 – 8,000</td></tr>
-      <tr><td>Upper Primary (Grade 4–6)</td><td class="amt">KSh 9,500 – 11,000</td></tr>
-      <tr><td>Grade 7 (JSS)</td><td class="amt">KSh 13,500</td></tr>
-      <tr><td>Grade 8 (JSS)</td><td class="amt">KSh 13,500</td></tr>
-      <tr><td>Grade 9 (JSS)</td><td class="amt">KSh 14,000</td></tr>
+      <thead><tr><th>Stage</th><th style="text-align:right;">Fee / Term</th></tr></thead>
+      <tbody id="feeOtherStagesRows">
+        <tr><td>Lower Primary (Grade 1–3)</td><td class="amt">KSh 7,500 – 8,000</td></tr>
+        <tr><td>Upper Primary (Grade 4–6)</td><td class="amt">KSh 9,500 – 11,000</td></tr>
+        <tr><td>Grade 7 (JSS)</td><td class="amt">KSh 13,500</td></tr>
+        <tr><td>Grade 8 (JSS)</td><td class="amt">KSh 13,500</td></tr>
+        <tr><td>Grade 9 (JSS)</td><td class="amt">KSh 14,000</td></tr>
+      </tbody>
     </table>
   </div>
   <div class="fee-note-box reveal">
     <h3>📋 Notes &amp; Payment</h3>
-    <ul>
+    <ul id="feeNotesList">
       <li>Birth certificate copy required when joining school</li>
       <li>Fees cleared within first two months of the term</li>
       <li>Pupils carry packed snacks &amp; water — no money allowed in school</li>
@@ -448,12 +459,12 @@
       <li>Extra co-curricular activities KSh 1,000/term each (Skating, Scouts, Taekwondo, etc.)</li>
     </ul>
     <h3 style="margin-top:22px;">🚌 Transport Charges (Per Term)</h3>
-    <div class="transport-grid">
+    <div class="transport-grid" id="feeTransportGrid">
       <div class="transport-card"><div class="amt">KSh 4,500</div><div class="zones">Kayole 1, Matopeni, Maana, Obama, Komarocks, Saika, Spring Valley</div></div>
       <div class="transport-card"><div class="amt">KSh 5,000</div><div class="zones">Njiru, Kirima, Mowlem, Nyamavilla, Masimba</div></div>
       <div class="transport-card"><div class="amt">KSh 6,000</div><div class="zones">Umoja, Chokaa</div></div>
     </div>
-    <div class="payment-note">Payment options: KCB M-Pesa, Equity M-Pesa, Equity Bank, KCB Bank, and Family Bank accounts are accepted. Contact the school office directly on <a href="tel:+254726517906" style="color:#7a5c00;font-weight:700;">+254 726 517 906</a> for current paybill and account numbers before making a payment.</div>
+    <div class="payment-note">Payment options: <span id="feePaymentMethods">KCB M-Pesa, Equity M-Pesa, Equity Bank, KCB Bank, and Family Bank accounts are accepted.</span> Contact the school office directly on <a href="tel:+254726517906" id="paymentPhoneLink" style="color:#7a5c00;font-weight:700;">+254 726 517 906</a> for current paybill and account numbers before making a payment.</div>
   </div>
 </section>
 <section id="uniform">
@@ -464,9 +475,10 @@
   </div>
   <div class="uniform-grid reveal">
     <div class="uniform-card">
-      <h3>Boys Uniform</h3>
-      <p class="sub">Playgroup – Grade 6</p>
+      <h3 id="uniformBoysLowerTitle">Boys Uniform</h3>
+      <p class="sub" id="uniformBoysLowerSubtitle">Playgroup – Grade 6</p>
       <table>
+        <tbody id="uniformBoysLowerRows">
         <tr><td>Trouser (Navy Blue) 18–24</td><td class="amt">KSh 500</td></tr>
         <tr><td>Trouser 26–28</td><td class="amt">KSh 600</td></tr>
         <tr><td>Trouser 30+</td><td class="amt">KSh 650</td></tr>
@@ -485,12 +497,14 @@
         <tr><td>Tie (Small / Big)</td><td class="amt">KSh 100 / 150</td></tr>
         <tr><td>Marvin (all sizes)</td><td class="amt">KSh 300</td></tr>
         <tr><td>Socks (all sizes)</td><td class="amt">KSh 250</td></tr>
+        </tbody>
       </table>
     </div>
     <div class="uniform-card">
-      <h3>Girls Uniform</h3>
-      <p class="sub">Playgroup – Grade 6</p>
+      <h3 id="uniformGirlsLowerTitle">Girls Uniform</h3>
+      <p class="sub" id="uniformGirlsLowerSubtitle">Playgroup – Grade 6</p>
       <table>
+        <tbody id="uniformGirlsLowerRows">
         <tr><td>Dress (Navy Blue) 18–24</td><td class="amt">KSh 550</td></tr>
         <tr><td>Dress 26–28</td><td class="amt">KSh 600</td></tr>
         <tr><td>Dress 30+</td><td class="amt">KSh 650</td></tr>
@@ -509,14 +523,16 @@
         <tr><td>Tie (Small / Big)</td><td class="amt">KSh 100 / 150</td></tr>
         <tr><td>Marvin (all sizes)</td><td class="amt">KSh 300</td></tr>
         <tr><td>Socks (all sizes)</td><td class="amt">KSh 250</td></tr>
+        </tbody>
       </table>
     </div>
   </div>
   <div class="uniform-grid reveal">
     <div class="uniform-card">
-      <h3>Boys — JSS Uniform</h3>
-      <p class="sub">Grade 7–9</p>
+      <h3 id="uniformBoysJssTitle">Boys — JSS Uniform</h3>
+      <p class="sub" id="uniformBoysJssSubtitle">Grade 7–9</p>
       <table>
+        <tbody id="uniformBoysJssRows">
         <tr><td>Blazer</td><td class="amt">KSh 1,800</td></tr>
         <tr><td>Trouser</td><td class="amt">KSh 800</td></tr>
         <tr><td>Sweater</td><td class="amt">KSh 1,200</td></tr>
@@ -531,12 +547,14 @@
         <tr><td>Marvin</td><td class="amt">KSh 300</td></tr>
         <tr><td>Scarf</td><td class="amt">KSh 150</td></tr>
         <tr class="total-row"><td>Total (Boys)</td><td class="amt">KSh 10,600</td></tr>
+        </tbody>
       </table>
     </div>
     <div class="uniform-card">
-      <h3>Girls — JSS Uniform</h3>
-      <p class="sub">Grade 7–9</p>
+      <h3 id="uniformGirlsJssTitle">Girls — JSS Uniform</h3>
+      <p class="sub" id="uniformGirlsJssSubtitle">Grade 7–9</p>
       <table>
+        <tbody id="uniformGirlsJssRows">
         <tr><td>Blazer</td><td class="amt">KSh 1,800</td></tr>
         <tr><td>Skirt</td><td class="amt">KSh 800</td></tr>
         <tr><td>Sweater</td><td class="amt">KSh 1,200</td></tr>
@@ -551,6 +569,7 @@
         <tr><td>Marvin</td><td class="amt">KSh 300</td></tr>
         <tr><td>Scarf</td><td class="amt">KSh 150</td></tr>
         <tr class="total-row"><td>Total (Girls)</td><td class="amt">KSh 10,600</td></tr>
+        </tbody>
       </table>
     </div>
   </div>
@@ -606,7 +625,7 @@
     <button class="active">All</button><button>Photos</button><button>Videos</button><button>Events</button><button>Sports</button>
     <button>⛸️ Skating</button><button>🏕️ Scouts</button><button>🥋 Taekwondo</button><button>💻 Coding</button>
   </div>
-  <div class="gallery-grid reveal">
+  <div class="gallery-grid reveal" id="galleryGrid">
     <div class="gallery-item">Classroom Learning</div>
     <div class="gallery-item">School Grounds</div>
     <div class="gallery-item">Sports Day</div>
@@ -624,10 +643,10 @@
   </div>
   <div class="contact-grid reveal">
     <div>
-      <div class="contact-info-item"><div class="ico">📍</div><div><h4>Address</h4><p>P.O. Box 75904-0200, Nairobi, Kenya — Kayole Junction</p></div></div>
-      <div class="contact-info-item"><div class="ico">📞</div><div><h4>Phone / WhatsApp</h4><p><a href="tel:+254726517906">+254 726 517 906</a></p><a href="https://wa.me/254726517906" class="whatsapp-btn">Chat on WhatsApp ↗</a></div></div>
-      <div class="contact-info-item"><div class="ico">✉</div><div><h4>Email</h4><p><a href="mailto:emmanuelschool447@gmail.com">emmanuelschool447@gmail.com</a></p></div></div>
-      <div class="contact-info-item"><div class="ico">🕐</div><div><h4>Hours</h4><p>Mon–Fri: 7:00 AM – 4:00 PM<br>Office: 7:30 AM – 5:00 PM</p></div></div>
+      <div class="contact-info-item"><div class="ico">📍</div><div><h4>Address</h4><p id="settingsAddress">P.O. Box 75904-0200, Nairobi, Kenya — Kayole Junction</p></div></div>
+      <div class="contact-info-item"><div class="ico">📞</div><div><h4>Phone / WhatsApp</h4><p><a href="tel:+254726517906" id="settingsPhoneLink">+254 726 517 906</a></p><a href="https://wa.me/254726517906" class="whatsapp-btn" id="settingsWaLink">Chat on WhatsApp ↗</a></div></div>
+      <div class="contact-info-item"><div class="ico">✉</div><div><h4>Email</h4><p><a href="mailto:emmanuelschool447@gmail.com" id="settingsEmailLink">emmanuelschool447@gmail.com</a></p></div></div>
+      <div class="contact-info-item"><div class="ico">🕐</div><div><h4>Hours</h4><p id="settingsHours">Mon–Fri: 7:00 AM – 4:00 PM<br>Office: 7:30 AM – 5:00 PM</p></div></div>
       <div class="map-embed">Map embed placeholder for Kayole Junction, Nairobi — add the school's Google Maps embed link here.</div>
     </div>
     <div class="uniform-card">
@@ -665,7 +684,7 @@
     <div>
       <h4>Emmanuel Junior Centre School</h4>
       <p style="font-size:0.85rem;">Quality CBC education from Playgroup to Grade 9, grounded in faith, excellence, and community — serving Kayole Junction, Nairobi.</p>
-      <p style="font-size:0.82rem;margin-top:10px;">P.O. Box 75904-0200, Nairobi · +254 726 517 906</p>
+      <p style="font-size:0.82rem;margin-top:10px;" id="footerAddressPhone">P.O. Box 75904-0200, Nairobi · +254 726 517 906</p>
     </div>
     <div>
       <h4>Quick Links</h4>
@@ -713,7 +732,8 @@
     var level = document.getElementById('cLevel').value || 'a level';
     var msg = document.getElementById('cMsg').value || '';
     var text = encodeURIComponent('Hello, my name is ' + name + '. I am interested in enrolling for ' + level + '. ' + msg);
-    window.open('https://wa.me/254726517906?text=' + text, '_blank');
+    var waNumber = document.body.getAttribute('data-wa-number') || '254726517906';
+    window.open('https://wa.me/' + waNumber + '?text=' + text, '_blank');
   });
   document.querySelectorAll('.gallery-filters button').forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -771,6 +791,111 @@
     }, { threshold: 0.5 });
     statNums.forEach(function (n) { statIO.observe(n); });
   }
+
+  /* ---- Content loaded from /content/*.json (edited via the /admin CMS) ---- */
+  function escapeHtml(str) {
+    return String(str == null ? '' : str)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  function setText(id, val) { var el = document.getElementById(id); if (el && val != null) el.textContent = val; }
+  function setHtml(id, html) { var el = document.getElementById(id); if (el) el.innerHTML = html; }
+
+  function applySettings(s) {
+    if (!s) return;
+    var digits = (s.whatsapp || (s.phone || '').replace(/\D/g, ''));
+    document.body.setAttribute('data-wa-number', digits);
+    var telHref = 'tel:+' + (s.phone || '').replace(/\D/g, '');
+    var waHref = 'https://wa.me/' + digits;
+
+    setText('settingsAddress', s.address);
+    var phoneLink = document.getElementById('settingsPhoneLink');
+    if (phoneLink && s.phone) { phoneLink.textContent = s.phone; phoneLink.href = telHref; }
+    var waLink = document.getElementById('settingsWaLink');
+    if (waLink) waLink.href = waHref;
+    var emailLink = document.getElementById('settingsEmailLink');
+    if (emailLink && s.email) { emailLink.textContent = s.email; emailLink.href = 'mailto:' + s.email; }
+    var hoursEl = document.getElementById('settingsHours');
+    if (hoursEl) hoursEl.innerHTML = escapeHtml(s.hoursWeekday) + '<br>' + escapeHtml(s.hoursOffice);
+    var footerLine = document.getElementById('footerAddressPhone');
+    if (footerLine && s.address && s.phone) footerLine.textContent = s.address + ' · ' + s.phone;
+    var paymentPhoneLink = document.getElementById('paymentPhoneLink');
+    if (paymentPhoneLink && s.phone) { paymentPhoneLink.textContent = s.phone; paymentPhoneLink.href = telHref; }
+  }
+
+  function feeRow(row, isTotal) {
+    return '<tr' + (isTotal ? ' class="total-row"' : '') + '><td>' + escapeHtml(row.label) + '</td><td class="amt">' + escapeHtml(row.amount) + '</td></tr>';
+  }
+
+  function renderUniformGroup(prefix, group) {
+    if (!group) return;
+    setText(prefix + 'Title', group.title);
+    setText(prefix + 'Subtitle', group.subtitle);
+    var html = (group.rows || []).map(function (r) { return feeRow(r, false); }).join('');
+    if (group.total) {
+      var side = prefix.indexOf('Boys') > -1 ? 'Boys' : 'Girls';
+      html += feeRow({ label: 'Total (' + side + ')', amount: group.total }, true);
+    }
+    setHtml(prefix + 'Rows', html);
+  }
+
+  function renderFees(fees) {
+    if (!fees) return;
+    var pg = fees.playgroup;
+    if (pg) {
+      setText('feePlaygroundTitle', pg.title);
+      setText('feePlaygroundSubtitle', pg.subtitle);
+      var mainRows = feeRow({ label: 'School Fees', amount: pg.schoolFees }, false) +
+        feeRow({ label: 'Exams', amount: pg.exams }, false) +
+        feeRow({ label: 'Total / Term', amount: pg.total }, true);
+      setHtml('feePlaygroundMainRows', mainRows);
+      setHtml('feePlaygroundFeedingRows', (pg.feeding || []).map(function (r) { return feeRow(r, false); }).join(''));
+      setHtml('feePlaygroundOnetimeRows', (pg.oneTime || []).map(function (r) { return feeRow(r, false); }).join(''));
+    }
+    setHtml('feeOtherStagesRows', (fees.otherStages || []).map(function (r) { return feeRow(r, false); }).join(''));
+    setHtml('feeNotesList', (fees.notes || []).map(function (n) { return '<li>' + escapeHtml(n) + '</li>'; }).join(''));
+    setHtml('feeTransportGrid', (fees.transport || []).map(function (t) {
+      return '<div class="transport-card"><div class="amt">' + escapeHtml(t.amount) + '</div><div class="zones">' + escapeHtml(t.zones) + '</div></div>';
+    }).join(''));
+    setText('feePaymentMethods', fees.paymentMethods);
+    if (fees.activityPrice) {
+      document.querySelectorAll('.js-activity-price').forEach(function (el) { el.textContent = fees.activityPrice; });
+    }
+    (fees.programs || []).forEach(function (p, i) { setText('feeProgram' + i, p.fee); });
+    var u = fees.uniforms;
+    if (u) {
+      renderUniformGroup('uniformBoysLower', u.boysLower);
+      renderUniformGroup('uniformGirlsLower', u.girlsLower);
+      renderUniformGroup('uniformBoysJss', u.boysJss);
+      renderUniformGroup('uniformGirlsJss', u.girlsJss);
+    }
+  }
+
+  function renderGallery(gallery) {
+    var grid = document.getElementById('galleryGrid');
+    if (!grid || !gallery || !gallery.items || !gallery.items.length) return;
+    grid.innerHTML = gallery.items.map(function (item) {
+      if (item.image) {
+        return '<div class="gallery-item has-image" style="background-image:url(\'' + escapeHtml(item.image) + '\')"><span>' + escapeHtml(item.title) + '</span></div>';
+      }
+      if (item.videoUrl) {
+        return '<a class="gallery-item has-video" href="' + escapeHtml(item.videoUrl) + '" target="_blank" rel="noopener"><span>▶ ' + escapeHtml(item.title) + '</span></a>';
+      }
+      return '<div class="gallery-item">' + escapeHtml(item.title) + '</div>';
+    }).join('');
+  }
+
+  fetch('content/settings.json').then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+    .then(applySettings)
+    .catch(function (err) { console.warn('Could not load content/settings.json, keeping existing text:', err); });
+
+  fetch('content/fees.json').then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+    .then(renderFees)
+    .catch(function (err) { console.warn('Could not load content/fees.json, keeping existing text:', err); });
+
+  fetch('content/gallery.json').then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+    .then(renderGallery)
+    .catch(function (err) { console.warn('Could not load content/gallery.json, keeping placeholder tiles:', err); });
 </script>
 </body>
 </html>

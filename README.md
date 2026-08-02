@@ -4,13 +4,31 @@ Static website for Emmanuel Junior Centre School, a CBC (Competency-Based Curric
 
 ## Tech stack
 
-Plain HTML/CSS/JS — no backend, no build step, no dependencies.
+Plain HTML/CSS/JS — no build step, no framework. Editable content (fees, contact
+info, gallery) lives in small JSON files and is fetched client-side; the one
+piece of "backend" is a small Cloudflare Worker that only handles GitHub OAuth
+login for the admin panel — see [`SETUP.md`](SETUP.md).
 
 ## Project structure
 
 ```
-index.html   # main site page
+index.html            # main site page — fetches and renders content/*.json
+content/
+  settings.json        # phone, WhatsApp, email, address, hours
+  fees.json             # fee tables, uniform tables, transport charges
+  gallery.json           # photo/video gallery items
+admin/
+  index.html            # Decap CMS admin panel (visit /admin to edit content)
+  config.yml             # Decap CMS collections + GitHub backend config
+cms-oauth-proxy/        # Cloudflare Worker: GitHub OAuth login for /admin
+uploads/                # images uploaded via the CMS land here
 ```
+
+## Editing content
+
+Non-technical staff can update fees, contact info, and the gallery at
+`/admin` without touching code — see [`SETUP.md`](SETUP.md) for the one-time
+setup and how to give the school admin their own login.
 
 ## Local development
 
