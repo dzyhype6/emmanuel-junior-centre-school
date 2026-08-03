@@ -7,14 +7,14 @@ without touching HTML or redeploying code. Content lives in `content/settings.js
 files at page load.
 
 Because this site is hosted on GitHub Pages (static files only), logging in to
-`/admin` needs a small helper — a Cloudflare Worker in `cms-oauth-proxy/` — to
-complete GitHub's OAuth login on the CMS's behalf. That Worker needs to be
-deployed once. Everything else (editing content) works from any browser after
-that, for both Doomzy and the school admin.
+`/admin` needs a small helper: a Cloudflare Worker in `cms-oauth-proxy/` that
+completes GitHub's OAuth login on the CMS's behalf. That Worker only needs to
+be deployed once. After that, editing content works from any browser, for
+both Doomzy and the school admin.
 
 ---
 
-## Part A — One-time setup (Doomzy only)
+## Part A: One-time setup (Doomzy only)
 
 You need a GitHub account (already have: `dzyhype6`) and a free
 [Cloudflare](https://dash.cloudflare.com/sign-up) account.
@@ -26,12 +26,12 @@ You need a GitHub account (already have: `dzyhype6`) and a free
    - **Application name**: `Emmanuel Junior Centre School CMS` (anything you like)
    - **Homepage URL**: `https://dzyhype6.github.io/emmanuel-junior-centre-school/`
    - **Authorization callback URL**: `https://<your-worker-subdomain>.workers.dev/callback`
-     (you'll get the exact `<your-worker-subdomain>` in step 2 below — you can
-     come back and fill this in after deploying the Worker once you know the URL,
-     GitHub lets you edit it later)
+     (you'll get the exact `<your-worker-subdomain>` once you deploy the Worker
+     in step 2. GitHub lets you edit this field later, so just come back and
+     paste in the real URL then.)
 3. Click **Register application**.
-4. Click **Generate a new client secret**. Copy both the **Client ID** and the
-   **Client secret** somewhere safe — you'll paste them into Cloudflare next.
+4. Click **Generate a new client secret**, then copy both the **Client ID**
+   and the **Client secret** somewhere safe. You'll paste them into Cloudflare next.
 
 ### 2. Deploy the OAuth proxy Worker to Cloudflare
 
@@ -79,12 +79,12 @@ minute), `/admin` is ready to log in.
 
 ---
 
-## Part B — Giving the school admin their own login
+## Part B: Giving the school admin their own login
 
-The school admin is a separate person from Doomzy's GitHub account and needs
-their **own** GitHub account to log into `/admin` (Decap CMS's GitHub backend
-authenticates as a real GitHub user with write access to the repo — there's no
-separate "CMS-only" account system).
+The school admin is a separate person from Doomzy and needs their **own**
+GitHub account to log into `/admin`. Decap CMS's GitHub backend authenticates
+as a real GitHub user with write access to the repo; there's no separate
+"CMS-only" account system.
 
 1. Ask the school admin to create a free GitHub account if they don't have one
    ([github.com/join](https://github.com/join)) and tell you their username.
@@ -97,23 +97,23 @@ separate "CMS-only" account system).
    editing screens (Contact & School Info, Fees & Uniform, Gallery) and can
    save changes, which commit directly to this repo's `main` branch.
 
-**Note:** Collaborator access on GitHub is fairly broad (it lets someone push
-code, not just edit the CMS's JSON/image files). If that's a concern later,
-the fix is switching the repo to use GitHub's fine-grained permissions or a
-"content only" workflow (e.g. editorial_workflow with PR review) — not
-necessary to start, but worth knowing if you want tighter control down the
-line.
+**Note:** Collaborator access on GitHub is fairly broad; it lets someone push
+code, not just edit the CMS's JSON/image files. If that becomes a concern
+later, you can switch the repo to GitHub's fine-grained permissions or a
+"content only" workflow (e.g. editorial_workflow with PR review). Not
+necessary to start, but worth knowing about if you want tighter control down
+the line.
 
 ---
 
 ## What's editable from `/admin`
 
-- **Contact & School Info** — phone, WhatsApp number, email, address, hours.
-- **Fees & Uniform** — Playgroup fee table, other-stage fee ranges, program
-  card fees, notes/policies, transport charges, payment methods line, activity
-  price, and all four uniform tables (boys/girls, lower/JSS).
-- **Gallery** — add/remove/reorder photo or video items; upload a photo directly
-  (stored in `/uploads/`) or paste a YouTube/Vimeo link instead.
+- **Contact & School Info**: phone, WhatsApp number, email, address, hours.
+- **Fees & Uniform**: the Playgroup fee table, other-stage fee ranges, program
+  card fees, notes and policies, transport charges, the payment methods line,
+  activity price, and all four uniform tables (boys/girls, lower/JSS).
+- **Gallery**: add, remove, or reorder photo or video items. Upload a photo
+  directly (it's stored in `/uploads/`) or paste a YouTube/Vimeo link instead.
 
 Anything not listed above (page layout, colors, text copy, testimonials, etc.)
 still lives directly in `index.html` and needs a code change to update.

@@ -20,8 +20,8 @@ collections:
         name: "settings"
         format: "json"
         fields:
-          - { label: "Phone Number", name: "phone", widget: "string", hint: "Used for the click-to-call link. Format: +254 726 517 906" }
-          - { label: "WhatsApp Number", name: "whatsapp", widget: "string", hint: "Digits only, no + or spaces, with country code. Format: 254726517906" }
+          - { label: "Phone Number", name: "phone", widget: "string", hint: "This shows up as the click-to-call number on the site. Use the format +254 726 517 906." }
+          - { label: "WhatsApp Number", name: "whatsapp", widget: "string", hint: "Just digits, with the country code, no plus sign or spaces, e.g. 254726517906." }
           - { label: "Email Address", name: "email", widget: "string" }
           - { label: "Postal Address", name: "address", widget: "string" }
           - { label: "Weekday Hours", name: "hoursWeekday", widget: "string" }
@@ -56,7 +56,7 @@ collections:
                 fields:
                   - { label: "Item", name: "label", widget: "string" }
                   - { label: "Amount", name: "amount", widget: "string" }
-          - label: "Other Stages — Fee Ranges"
+          - label: "Other Stages: Fee Ranges"
             name: "otherStages"
             widget: "list"
             fields:
@@ -66,7 +66,7 @@ collections:
             name: "programs"
             widget: "list"
             fields:
-              - { label: "Stage (for your reference only, not shown as edited here)", name: "stageTag", widget: "string" }
+              - { label: "Stage (just for your own reference, this label doesn't appear on the page)", name: "stageTag", widget: "string" }
               - { label: "Fee Text", name: "fee", widget: "string" }
           - label: "Notes & Policies"
             name: "notes"
@@ -154,4 +154,4 @@ collections:
                 widget: "select"
                 options: ["Photos", "Videos", "Events", "Sports"]
               - { label: "Photo (optional)", name: "image", widget: "image", required: false, hint: "Upload a photo, or leave blank and add a video link below instead." }
-              - { label: "Video Link (optional)", name: "videoUrl", widget: "string", required: false, hint: "Paste a YouTube or Vimeo link. Uploading raw video files isn't supported — GitHub blocks files over 100MB, so a link keeps the site fast." }
+              - { label: "Video Link (optional)", name: "videoUrl", widget: "string", required: false, hint: "Paste a YouTube or Vimeo link here. We don't support uploading video files directly: GitHub blocks anything over 100MB, and a link keeps the site fast anyway." }
