@@ -27,6 +27,49 @@ collections:
           - { label: "Weekday Hours", name: "hoursWeekday", widget: "string" }
           - { label: "Office Hours", name: "hoursOffice", widget: "string" }
 
+  - name: "profile"
+    label: "Directors & School History"
+    files:
+      - file: "content/profile.json"
+        label: "School Profile"
+        name: "profile"
+        format: "json"
+        fields:
+          - label: "School Leadership"
+            name: "leadership"
+            widget: "object"
+            fields:
+              - { label: "Intro line (shown under the heading)", name: "intro", widget: "string" }
+              - label: "Directors"
+                name: "directors"
+                widget: "list"
+                fields:
+                  - { label: "Full Name", name: "name", widget: "string" }
+                  - { label: "Title", name: "role", widget: "string", hint: "Shown on the gold badge over the photo, e.g. Director" }
+                  - { label: "Photo", name: "photo", widget: "image", required: false, hint: "Portrait photo. If left blank, the person's initials are shown instead." }
+                  - { label: "Message (one paragraph per item)", name: "message", widget: "list" }
+          - label: "School Background & History"
+            name: "history"
+            widget: "object"
+            fields:
+              - { label: "Intro line (shown under the heading)", name: "intro", widget: "string" }
+              - { label: "History (one paragraph per item)", name: "paragraphs", widget: "list" }
+              - label: "Milestones (the dated timeline)"
+                name: "milestones"
+                widget: "list"
+                fields:
+                  - { label: "Year", name: "year", widget: "string", hint: "e.g. 2006, or a word like Today" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "text", widget: "string" }
+              - { label: "Results Panel Heading", name: "scoresTitle", widget: "string" }
+              - label: "Examination Mean Scores"
+                name: "scores"
+                widget: "list"
+                fields:
+                  - { label: "Year", name: "year", widget: "string" }
+                  - { label: "Mean Score", name: "mean", widget: "string" }
+              - { label: "Note under the scores", name: "scoresNote", widget: "string" }
+
   - name: "fees"
     label: "Fees & Uniform"
     files:

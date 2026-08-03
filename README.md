@@ -5,7 +5,7 @@ Static website for Emmanuel Junior Centre School, a CBC (Competency-Based Curric
 ## Tech stack
 
 Plain HTML/CSS/JS — no build step, no framework. Editable content (fees, contact
-info, gallery) lives in small JSON files and is fetched client-side; the one
+info, gallery, directors and school history) lives in small JSON files and is fetched client-side; the one
 piece of "backend" is a small Cloudflare Worker that only handles GitHub OAuth
 login for the admin panel — see [`SETUP.md`](SETUP.md).
 
@@ -17,6 +17,7 @@ content/
   settings.json        # phone, WhatsApp, email, address, hours
   fees.json             # fee tables, uniform tables, transport charges
   gallery.json           # photo/video gallery items
+  profile.json           # directors (leadership) + school history, milestones, mean scores
 admin/
   index.html            # Decap CMS admin panel (visit /admin to edit content)
   config.yml             # Decap CMS collections + GitHub backend config

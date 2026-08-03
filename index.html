@@ -39,7 +39,7 @@
     html { scroll-behavior: auto; }
     .reveal { opacity: 1; transform: none; transition: none; }
     .hero-anim-1, .hero-anim-2, .hero-anim-3, .hero-anim-4, .hero-anim-5, .hero-anim-6, .hero-anim-7 { animation: none !important; opacity: 1 !important; transform: none !important; }
-    .pillar, .program-card, .activity-card, .value-card, .mvv-card, .testimonial-card, .uniform-card, .transport-card, .gallery-item, .btn, .fee-table-wrap, .fee-note-box, nav a::after, .brand-badge { transition: none !important; }
+    .pillar, .program-card, .activity-card, .value-card, .mvv-card, .leader-card, .score-card, .testimonial-card, .uniform-card, .transport-card, .gallery-item, .btn, .fee-table-wrap, .fee-note-box, nav a::after, .brand-badge { transition: none !important; }
     .decor-cap-1, .decor-cap-2, .decor-book, .decor-pencil, .decor-star, .decor-sparkle { animation: none !important; opacity: .75 !important; transform: none !important; }
     .confetti-burst .confetti-piece, .confetti-burst.is-visible .confetti-piece { animation: none !important; opacity: 0 !important; }
   }
@@ -165,6 +165,45 @@
   .value-card .ico { width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: var(--primary-dark); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-weight: 800; }
   .value-card h4 { color: var(--primary); margin-bottom: 6px; font-size: 0.98rem; }
   .value-card p { color: var(--muted); font-size: 0.85rem; }
+
+  /* Leadership — the school's directors */
+  .leaders-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; max-width: 1000px; margin: 0 auto; }
+  @media (max-width: 800px) { .leaders-grid { grid-template-columns: 1fr; } }
+  .leader-card { background: var(--cream); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: transform .3s ease, box-shadow .3s ease; }
+  .leader-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+  .leader-photo { position: relative; aspect-ratio: 4 / 5; background: linear-gradient(160deg, var(--primary), var(--primary-dark)); overflow: hidden; }
+  .leader-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 18%; }
+  .leader-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,46,26,0.78) 0%, rgba(10,46,26,0.32) 26%, transparent 52%); }
+  .leader-initials { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', Georgia, 'Times New Roman', serif; font-size: 3.4rem; font-weight: 700; color: var(--gold-light); }
+  .leader-plate { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 18px 22px; }
+  .leader-plate h3 { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; color: var(--white); font-size: 1.22rem; font-weight: 700; line-height: 1.2; }
+  .leader-role { display: inline-block; margin-top: 8px; background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: var(--primary-dark); font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.09em; padding: 4px 12px; border-radius: 20px; }
+  .leader-body { padding: 24px; }
+  .leader-body p { color: var(--muted); font-size: 0.89rem; margin-bottom: 12px; }
+  .leader-body p:last-child { margin-bottom: 0; }
+
+  /* School background — history, milestones and results */
+  .history-layout { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 44px; max-width: 1080px; margin: 0 auto 52px; align-items: start; }
+  @media (max-width: 860px) { .history-layout { grid-template-columns: 1fr; gap: 34px; } }
+  .history-story p { color: var(--muted); font-size: 0.94rem; margin-bottom: 14px; }
+  .history-story p:last-child { margin-bottom: 0; }
+  .timeline { list-style: none; position: relative; padding-left: 30px; }
+  .timeline::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(to bottom, var(--gold), rgba(209,161,60,0.12)); }
+  .timeline li { position: relative; margin-bottom: 24px; }
+  .timeline li:last-child { margin-bottom: 0; }
+  .timeline li::before { content: ''; position: absolute; left: -30px; top: 5px; width: 16px; height: 16px; border-radius: 50%; background: var(--white); border: 3px solid var(--gold); box-shadow: 0 0 0 3px rgba(209,161,60,0.15); }
+  .timeline .yr { display: block; color: var(--gold); font-weight: 800; font-size: 0.74rem; letter-spacing: 0.09em; text-transform: uppercase; }
+  .timeline h4 { color: var(--primary); font-size: 0.98rem; margin: 3px 0 5px; }
+  .timeline p { color: var(--muted); font-size: 0.86rem; }
+  .results-panel { max-width: 1080px; margin: 0 auto; background: linear-gradient(160deg, var(--primary), var(--primary-dark)); border-radius: 16px; padding: 32px 26px; text-align: center; box-shadow: var(--shadow-sm); }
+  .results-panel h3 { color: var(--gold-light); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 22px; }
+  .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 14px; }
+  .score-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; padding: 16px 10px; transition: transform .3s ease, background-color .3s ease; }
+  .score-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.13); }
+  .score-card .yr { display: block; color: #c9dbd0; font-size: 0.78rem; letter-spacing: 0.06em; }
+  .score-card .mean { display: block; font-family: 'Fraunces', Georgia, 'Times New Roman', serif; color: var(--gold-light); font-size: 1.58rem; font-weight: 700; line-height: 1.25; }
+  .results-note { color: #c9dbd0; font-size: 0.82rem; margin-top: 20px; }
+
   .programs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 22px; max-width: 1100px; margin: 0 auto; }
   .program-card { background: var(--white); border: 1px solid var(--border); border-top: 4px solid var(--gold); border-radius: 14px; padding: 26px; transition: transform .3s ease, box-shadow .3s ease; }
   .program-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
@@ -299,6 +338,7 @@
     <nav>
       <ul id="navMenu">
         <li><a href="#about">About</a></li>
+        <li><a href="#leadership">Leadership</a></li>
         <li><a href="#programs">Programs</a></li>
         <li><a href="#activities">Activities</a></li>
         <li><a href="#fees">Fees</a></li>
@@ -333,7 +373,7 @@
         <div class="stat-card"><div class="num">500+</div><div class="label">Students Enrolled</div></div>
         <div class="stat-card"><div class="num">98%</div><div class="label">Parent Satisfaction</div></div>
         <div class="stat-card"><div class="num">20+</div><div class="label">Qualified Teachers</div></div>
-        <div class="stat-card"><div class="num">10+</div><div class="label">Years of Excellence</div></div>
+        <div class="stat-card"><div class="num">19+</div><div class="label">Years of Excellence</div></div>
       </div>
     </div>
     <div class="hero-card hero-anim-7">
@@ -368,6 +408,70 @@
     <div class="value-card"><div class="ico">★</div><h4>Excellence</h4><p>High standards inspiring every child to reach their fullest God-given potential.</p></div>
     <div class="value-card"><div class="ico">✓</div><h4>Integrity</h4><p>Honesty, respect and responsibility in every interaction and lesson.</p></div>
     <div class="value-card"><div class="ico">⚡</div><h4>Innovation</h4><p>Digital literacy and modern CBC pedagogy preparing learners for tomorrow's Kenya.</p></div>
+  </div>
+</section>
+<section class="alt-bg" id="leadership">
+  <div class="section-head reveal">
+    <span class="tag">School Leadership</span>
+    <h2>Meet Our <em>Directors</em></h2>
+    <p id="leadershipIntro">Emmanuel Junior Centre School is led by two directors who have guided the school since its earliest days.</p>
+  </div>
+  <div class="leaders-grid reveal" id="leadershipGrid">
+    <article class="leader-card">
+      <div class="leader-photo">
+        <img src="uploads/director-joseph-gathumbi.jpg" alt="Joseph Gathumbi, Director of Emmanuel Junior Centre School" loading="lazy" width="760" height="842">
+        <div class="leader-plate"><h3>Joseph Gathumbi</h3><span class="leader-role">Director</span></div>
+      </div>
+      <div class="leader-body">
+        <p>Emmanuel Junior Centre School started in June 2006 as a private school that has come from a very humble beginning — two classrooms made of iron sheets, without a cemented floor, and only two teachers who worked very hard.</p>
+        <p>We have seen God in all areas. Today all our classes are built permanently, we have a permanent administration block, two school buses, and a feeding programme giving our pupils a balanced diet.</p>
+        <p>So far we are saying God is our Ebenezer. May He receive all the glory. Amen.</p>
+      </div>
+    </article>
+    <article class="leader-card">
+      <div class="leader-photo">
+        <img src="uploads/director-margaret-wambui.jpg" alt="Margaret Wambui, Director of Emmanuel Junior Centre School" loading="lazy" width="760" height="853">
+        <div class="leader-plate"><h3>Margaret Wambui</h3><span class="leader-role">Director</span></div>
+      </div>
+      <div class="leader-body">
+        <p>God has been gracious to us; we have produced pupils who are now in the universities pursuing their higher education — the ones who sat their examinations during our first year, 2013.</p>
+        <p>This is a Centre of excellence and our trust is only in our Almighty God, who is the author of everything that we do in our school. God has blessed us with staff members who are really committed to the service and well-being of our children as far as the community.</p>
+        <p>We strongly believe that God is taking us to higher heights for His own glory. God bless every one, including the parents of this school, for your continued support of this vision.</p>
+      </div>
+    </article>
+  </div>
+</section>
+<section id="history">
+  <div class="section-head reveal">
+    <span class="tag">School Background</span>
+    <h2>From Two Iron-Sheet Classrooms to a <em>Centre of Excellence</em></h2>
+    <p id="historyIntro">Founded in June 2006 at Kayole Junction, the school has grown from two iron-sheet classrooms into a permanent CBC campus serving Playgroup through Grade 9.</p>
+  </div>
+  <div class="history-layout reveal">
+    <div class="history-story" id="historyStory">
+      <p>Emmanuel Junior Centre School started in June 2006. It is a private school that has come from a very humble beginning. It was started with only two classrooms made of iron sheets, without a cemented floor, and there were only two teachers who worked very hard, which enhanced an increased population.</p>
+      <p>In the year 2007 the number rose. More classes were built up to Standard 3, and the number of teachers increased to four.</p>
+      <p>In academics we have done the Kenya national examination of primary education, and the performance has been very impressive.</p>
+      <p>In the area of development we now have all classes built permanently and a permanent administration block. We have two school buses, and the feeding programme is doing very well, giving pupils a balanced diet.</p>
+      <p>The school is now in its own premises and the security has been beefed up. We teach French as a foreign language and computer, and we participate in extra co-curricular activities including sports and music. We are doing the competency-based curriculum which is recommended by the government.</p>
+    </div>
+    <ol class="timeline" id="historyTimeline">
+      <li><span class="yr">2006</span><h4>The school opens</h4><p>Started in June with two classrooms made of iron sheets, an uncemented floor and just two teachers.</p></li>
+      <li><span class="yr">2007</span><h4>Growth to Standard 3</h4><p>Enrolment rose, more classes were built up to Standard 3 and the teaching team grew to four.</p></li>
+      <li><span class="yr">2013</span><h4>First examination class</h4><p>Our first candidates sat the national primary examination. Those pupils are now in universities pursuing higher education.</p></li>
+      <li><span class="yr">Today</span><h4>A permanent CBC campus</h4><p>Own premises with permanent classrooms and an administration block, two school buses, a feeding programme, French, computer studies and full CBC to Grade 9.</p></li>
+    </ol>
+  </div>
+  <div class="results-panel reveal">
+    <h3 id="historyScoresTitle">National Primary Examination — Mean Scores</h3>
+    <div class="results-grid" id="historyScores">
+      <div class="score-card"><span class="yr">2013</span><span class="mean">289</span></div>
+      <div class="score-card"><span class="yr">2014</span><span class="mean">258</span></div>
+      <div class="score-card"><span class="yr">2015</span><span class="mean">303</span></div>
+      <div class="score-card"><span class="yr">2016</span><span class="mean">293</span></div>
+      <div class="score-card"><span class="yr">2017</span><span class="mean">299</span></div>
+    </div>
+    <p class="results-note" id="historyScoresNote">Mean scores from the Kenya national examination of primary education, as published in the school profile.</p>
   </div>
 </section>
 <section class="alt-bg" id="programs">
@@ -690,6 +794,8 @@
       <h4>Quick Links</h4>
       <ul>
         <li><a href="#about">About Us</a></li>
+        <li><a href="#leadership">Our Directors</a></li>
+        <li><a href="#history">School History</a></li>
         <li><a href="#programs">Programs</a></li>
         <li><a href="#activities">Activities</a></li>
         <li><a href="#gallery">Gallery</a></li>
@@ -871,6 +977,54 @@
     }
   }
 
+  function initialsOf(name) {
+    return String(name || '').trim().split(/\s+/).slice(0, 2)
+      .map(function (part) { return part.charAt(0).toUpperCase(); }).join('');
+  }
+
+  function renderProfile(profile) {
+    if (!profile) return;
+    var lead = profile.leadership;
+    if (lead) {
+      setText('leadershipIntro', lead.intro);
+      if (lead.directors && lead.directors.length) {
+        setHtml('leadershipGrid', lead.directors.map(function (d) {
+          var role = d.role || 'Director';
+          var media = d.photo
+            ? '<img src="' + escapeHtml(d.photo) + '" alt="' + escapeHtml(d.name + ', ' + role + ' of Emmanuel Junior Centre School') + '" loading="lazy">'
+            : '<span class="leader-initials" aria-hidden="true">' + escapeHtml(initialsOf(d.name)) + '</span>';
+          var body = (d.message || []).map(function (p) { return '<p>' + escapeHtml(p) + '</p>'; }).join('');
+          return '<article class="leader-card">' +
+            '<div class="leader-photo">' + media +
+            '<div class="leader-plate"><h3>' + escapeHtml(d.name) + '</h3>' +
+            '<span class="leader-role">' + escapeHtml(role) + '</span></div></div>' +
+            '<div class="leader-body">' + body + '</div></article>';
+        }).join(''));
+      }
+    }
+    var hist = profile.history;
+    if (hist) {
+      setText('historyIntro', hist.intro);
+      if (hist.paragraphs && hist.paragraphs.length) {
+        setHtml('historyStory', hist.paragraphs.map(function (p) { return '<p>' + escapeHtml(p) + '</p>'; }).join(''));
+      }
+      if (hist.milestones && hist.milestones.length) {
+        setHtml('historyTimeline', hist.milestones.map(function (m) {
+          return '<li><span class="yr">' + escapeHtml(m.year) + '</span><h4>' + escapeHtml(m.title) +
+            '</h4><p>' + escapeHtml(m.text) + '</p></li>';
+        }).join(''));
+      }
+      setText('historyScoresTitle', hist.scoresTitle);
+      if (hist.scores && hist.scores.length) {
+        setHtml('historyScores', hist.scores.map(function (s) {
+          return '<div class="score-card"><span class="yr">' + escapeHtml(s.year) +
+            '</span><span class="mean">' + escapeHtml(s.mean) + '</span></div>';
+        }).join(''));
+      }
+      setText('historyScoresNote', hist.scoresNote);
+    }
+  }
+
   function renderGallery(gallery) {
     var grid = document.getElementById('galleryGrid');
     if (!grid || !gallery || !gallery.items || !gallery.items.length) return;
@@ -892,6 +1046,10 @@
   fetch('content/fees.json').then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
     .then(renderFees)
     .catch(function (err) { console.warn('Could not load content/fees.json, keeping existing text:', err); });
+
+  fetch('content/profile.json').then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+    .then(renderProfile)
+    .catch(function (err) { console.warn('Could not load content/profile.json, keeping existing text:', err); });
 
   fetch('content/gallery.json').then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
     .then(renderGallery)

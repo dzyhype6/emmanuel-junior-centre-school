@@ -1,0 +1,68 @@
+{
+  "leadership": {
+    "intro": "Emmanuel Junior Centre School is led by two directors who have guided the school since its earliest days.",
+    "directors": [
+      {
+        "name": "Joseph Gathumbi",
+        "role": "Director",
+        "photo": "uploads/director-joseph-gathumbi.jpg",
+        "message": [
+          "Emmanuel Junior Centre School started in June 2006 as a private school that has come from a very humble beginning — two classrooms made of iron sheets, without a cemented floor, and only two teachers who worked very hard.",
+          "We have seen God in all areas. Today all our classes are built permanently, we have a permanent administration block, two school buses, and a feeding programme giving our pupils a balanced diet.",
+          "So far we are saying God is our Ebenezer. May He receive all the glory. Amen."
+        ]
+      },
+      {
+        "name": "Margaret Wambui",
+        "role": "Director",
+        "photo": "uploads/director-margaret-wambui.jpg",
+        "message": [
+          "God has been gracious to us; we have produced pupils who are now in the universities pursuing their higher education — the ones who sat their examinations during our first year, 2013.",
+          "This is a Centre of excellence and our trust is only in our Almighty God, who is the author of everything that we do in our school. God has blessed us with staff members who are really committed to the service and well-being of our children as far as the community.",
+          "We strongly believe that God is taking us to higher heights for His own glory. God bless every one, including the parents of this school, for your continued support of this vision."
+        ]
+      }
+    ]
+  },
+  "history": {
+    "intro": "Founded in June 2006 at Kayole Junction, the school has grown from two iron-sheet classrooms into a permanent CBC campus serving Playgroup through Grade 9.",
+    "paragraphs": [
+      "Emmanuel Junior Centre School started in June 2006. It is a private school that has come from a very humble beginning. It was started with only two classrooms made of iron sheets, without a cemented floor, and there were only two teachers who worked very hard, which enhanced an increased population.",
+      "In the year 2007 the number rose. More classes were built up to Standard 3, and the number of teachers increased to four.",
+      "In academics we have done the Kenya national examination of primary education, and the performance has been very impressive.",
+      "In the area of development we now have all classes built permanently and a permanent administration block. We have two school buses, and the feeding programme is doing very well, giving pupils a balanced diet.",
+      "The school is now in its own premises and the security has been beefed up. We teach French as a foreign language and computer, and we participate in extra co-curricular activities including sports and music. We are doing the competency-based curriculum which is recommended by the government."
+    ],
+    "milestones": [
+      {
+        "year": "2006",
+        "title": "The school opens",
+        "text": "Started in June with two classrooms made of iron sheets, an uncemented floor and just two teachers."
+      },
+      {
+        "year": "2007",
+        "title": "Growth to Standard 3",
+        "text": "Enrolment rose, more classes were built up to Standard 3 and the teaching team grew to four."
+      },
+      {
+        "year": "2013",
+        "title": "First examination class",
+        "text": "Our first candidates sat the national primary examination. Those pupils are now in universities pursuing higher education."
+      },
+      {
+        "year": "Today",
+        "title": "A permanent CBC campus",
+        "text": "Own premises with permanent classrooms and an administration block, two school buses, a feeding programme, French, computer studies and full CBC to Grade 9."
+      }
+    ],
+    "scoresTitle": "National Primary Examination — Mean Scores",
+    "scores": [
+      { "year": "2013", "mean": "289" },
+      { "year": "2014", "mean": "258" },
+      { "year": "2015", "mean": "303" },
+      { "year": "2016", "mean": "293" },
+      { "year": "2017", "mean": "299" }
+    ],
+    "scoresNote": "Mean scores from the Kenya national examination of primary education, as published in the school profile."
+  }
+}
